@@ -1,6 +1,7 @@
 package me.siasur.unrelatedadditions;
 
 import com.mojang.logging.LogUtils;
+import me.siasur.unrelatedadditions.block.ModBlocks;
 import me.siasur.unrelatedadditions.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -24,6 +25,7 @@ public class UnrelatedAdditions
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

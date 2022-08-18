@@ -1,7 +1,7 @@
 package me.siasur.unrelatedadditions.item;
 
 import me.siasur.unrelatedadditions.UnrelatedAdditions;
-import net.minecraft.world.item.CreativeModeTab;
+import me.siasur.unrelatedadditions.inventory.ModCreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -27,5 +27,4 @@ public class ModItems {
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
-
 }

@@ -1,5 +1,6 @@
-package me.siasur.unrelatedadditions.item;
+package me.siasur.unrelatedadditions.inventory;
 
+import me.siasur.unrelatedadditions.item.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
