@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "unrelatedadditions:sextuple_compressed_cobbled_deepslate"
+        }
+      ]
+    }
+  ]
+}

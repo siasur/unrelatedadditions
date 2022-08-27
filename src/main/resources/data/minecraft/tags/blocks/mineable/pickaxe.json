@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "values": [
+    "unrelatedadditions:compressed_andesite",
+    "unrelatedadditions:compressed_cobbled_deepslate",
+    "unrelatedadditions:compressed_cobblestone",
+    "unrelatedadditions:compressed_diorite",
+    "unrelatedadditions:compressed_dirt",
+    "unrelatedadditions:compressed_granite",
+    "unrelatedadditions:compressed_gravel",
+    "unrelatedadditions:compressed_red_sand",
+    "unrelatedadditions:compressed_sand",
+    "unrelatedadditions:double_compressed_cobbled_deepslate",
+    "unrelatedadditions:double_compressed_cobblestone",
+    "unrelatedadditions:double_compressed_dirt",
+    "unrelatedadditions:double_compressed_gravel",
+    "unrelatedadditions:double_compressed_red_sand",
+    "unrelatedadditions:double_compressed_sand",
+    "unrelatedadditions:quadruple_compressed_cobbled_deepslate",
+    "unrelatedadditions:quadruple_compressed_cobblestone",
+    "unrelatedadditions:quintuple_compressed_cobbled_deepslate",
+    "unrelatedadditions:quintuple_compressed_cobblestone",
+    "unrelatedadditions:sextuple_compressed_cobbled_deepslate",
+    "unrelatedadditions:sextuple_compressed_cobblestone",
+    "unrelatedadditions:triple_compressed_cobbled_deepslate",
+    "unrelatedadditions:triple_compressed_cobblestone",
+    "unrelatedadditions:triple_compressed_dirt",
+    "unrelatedadditions:triple_compressed_red_sand",
+    "unrelatedadditions:triple_compressed_sand"
+  ]
+}
