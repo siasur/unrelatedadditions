@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "compressing",
+  "key": {
+    "#": {
+      "item": "unrelatedadditions:compressed_dirt"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "unrelatedadditions:double_compressed_dirt"
+  }
+}
