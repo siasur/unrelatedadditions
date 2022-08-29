@@ -3,6 +3,7 @@ package me.siasur.unrelatedadditions;
 import com.mojang.logging.LogUtils;
 import me.siasur.unrelatedadditions.block.ModBlocks;
 import me.siasur.unrelatedadditions.item.ModItems;
+import me.siasur.unrelatedadditions.utils.BlockHitSideDetection;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -32,6 +33,7 @@ public class UnrelatedAdditions
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        BlockHitSideDetection.register(MinecraftForge.EVENT_BUS);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
