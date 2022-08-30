@@ -2,6 +2,11 @@
   "item.unrelatedadditions.tiny_coal": "Tiny Coal",
   "item.unrelatedadditions.tiny_charcoal": "Tiny Charcoal",
 
+  "item.unrelatedadditions.wooden_hammer": "Wooden Hammer",
+  "item.unrelatedadditions.stone_hammer": "Stone Hammer",
+  "item.unrelatedadditions.iron_hammer": "Iron Hammer",
+  "item.unrelatedadditions.golden_hammer": "Golden Hammer",
+  "item.unrelatedadditions.diamond_hammer": "Diamond Hammer",
 
   "block.unrelatedadditions.compressed_andesite": "Compressed Andesite",
   "block.unrelatedadditions.compressed_cobbled_deepslate": "Compressed Cobbled Deepslate",

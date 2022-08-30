@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "H": {
+      "tag": "forge:rods/wooden"
+    },
+    "M": {
+      "tag": "minecraft:stone_tool_materials"
+    }
+  },
+  "pattern": [
+    "MMM",
+    "MHM",
+    " H "
+  ],
+  "result": {
+    "item": "unrelatedadditions:stone_hammer"
+  }
+}
