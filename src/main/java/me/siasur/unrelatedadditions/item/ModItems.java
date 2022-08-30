@@ -2,6 +2,7 @@ package me.siasur.unrelatedadditions.item;
 
 import me.siasur.unrelatedadditions.UnrelatedAdditions;
 import me.siasur.unrelatedadditions.inventory.ModCreativeModeTab;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -26,23 +27,23 @@ public class ModItems {
             ));
 
     public static final RegistryObject<HammerItem> WOODEN_HAMMER = registerHammer("wooden_hammer", Tiers.WOOD,
-            new Item.Properties().tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)
+            new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
 
     public static final RegistryObject<HammerItem> STONE_HAMMER = registerHammer("stone_hammer", Tiers.STONE,
-            new Item.Properties().tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)
+            new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
 
     public static final RegistryObject<HammerItem> IRON_HAMMER = registerHammer("iron_hammer", Tiers.IRON,
-            new Item.Properties().tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)
+            new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
 
     public static final RegistryObject<HammerItem> GOLDEN_HAMMER = registerHammer("golden_hammer", Tiers.GOLD,
-            new Item.Properties().tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)
+            new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
 
     public static final RegistryObject<HammerItem> DIAMOND_HAMMER = registerHammer("diamond_hammer", Tiers.DIAMOND,
-            new Item.Properties().tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)
+            new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
 
     public static void register(IEventBus eventBus) {

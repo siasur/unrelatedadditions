@@ -1,5 +1,6 @@
 package me.siasur.unrelatedadditions.item;
 
+import me.siasur.unrelatedadditions.inventory.ModCreativeModeTab;
 import me.siasur.unrelatedadditions.utils.BlockHitSideDetection;
 import me.siasur.unrelatedadditions.utils.ModTags;
 import net.minecraft.core.BlockPos;
@@ -7,6 +8,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
@@ -23,6 +25,8 @@ public class HammerItem extends DiggerItem {
 
     private static float _DAMAGE = 1f;
     private static float _ATTACKSPEED = -2.8f;
+
+    private static CreativeModeTab additionalCreativeTab = ModCreativeModeTab.TAB_UNRELATEDADDITIONS;
 
     public HammerItem(Tier toolTier, Properties properties) {
         super(_DAMAGE, _ATTACKSPEED, toolTier, ModTags.Blocks.MINEABLE_WITH_HAMMER, properties);
@@ -83,10 +87,13 @@ public class HammerItem extends DiggerItem {
 
         return true;
     }
-
     @Override
-    public float getDestroySpeed(ItemStack p_41004_, BlockState p_41005_) {
-        return super.getDestroySpeed(p_41004_, p_41005_);
+    protected boolean allowedIn(CreativeModeTab creativeTab) {
+        if (creativeTab.equals(additionalCreativeTab)) {
+            return true;
+        }
+
+        return super.allowedIn(creativeTab);
     }
 
     private List<BlockPos> getAdditionalBlocks(BlockPos pos, Direction hitSide) {
