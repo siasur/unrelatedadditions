@@ -35,6 +35,7 @@
   "block.unrelatedadditions.triple_compressed_red_sand": "Triple Compressed Red Sand",
   "block.unrelatedadditions.triple_compressed_sand": "Triple Compressed Sand",
 
+  "itemGroup.unrelatedadditions": "Unrelated Additions",
 
-  "itemGroup.unrelatedadditions": "Unrelated Additions"
+  "tooltip.unrelatedadditions.compressedblock": "%s Blocks"
 }
