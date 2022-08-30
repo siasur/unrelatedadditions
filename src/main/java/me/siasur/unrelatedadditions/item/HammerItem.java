@@ -26,7 +26,7 @@ public class HammerItem extends DiggerItem {
     private static float _DAMAGE = 1f;
     private static float _ATTACKSPEED = -2.8f;
 
-    private static CreativeModeTab additionalCreativeTab = ModCreativeModeTab.TAB_UNRELATEDADDITIONS;
+    private static CreativeModeTab _ADDITIONAL_CREATIVE_TAB = ModCreativeModeTab.TAB_UNRELATEDADDITIONS;
 
     public HammerItem(Tier toolTier, Properties properties) {
         super(_DAMAGE, _ATTACKSPEED, toolTier, ModTags.Blocks.MINEABLE_WITH_HAMMER, properties);
@@ -89,7 +89,7 @@ public class HammerItem extends DiggerItem {
     }
     @Override
     protected boolean allowedIn(CreativeModeTab creativeTab) {
-        if (creativeTab.equals(additionalCreativeTab)) {
+        if (creativeTab.equals(_ADDITIONAL_CREATIVE_TAB)) {
             return true;
         }
 
