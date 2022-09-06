@@ -40,10 +40,13 @@ public class MagnetItem extends Item {
         AABB areaOfEffect = entity.getBoundingBox().inflate(RANGE);
         List<ItemEntity> itemsToPull = level.getEntitiesOfClass(ItemEntity.class, areaOfEffect, this::canPullItem);
 
-        Vec3 playerVector = entity.position().add(0, .75f, 0);
+        Vec3 playerVector = entity.position();
         for (ItemEntity item : itemsToPull) {
             Vec3 itemVector = VectorHelper.entityCenter(item);
-            Vec3 pullVector = playerVector.subtract(itemVector).normalize();
+            Vec3 pullVector = playerVector.subtract(itemVector);
+            if (pullVector.length() > 1) {
+                pullVector = pullVector.normalize();
+            }
 
             item.setDeltaMovement(pullVector.scale(SCALING_FACTOR));
         }
