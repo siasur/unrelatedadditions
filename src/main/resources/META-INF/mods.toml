@@ -19,7 +19,7 @@ modId="unrelatedadditions" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 # ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
 # see the associated build.gradle script for how to populate this completely automatically during a build
-version="0.1.3-1.19" #mandatory
+version="0.2.0-1.19" #mandatory
  # A display name for the mod
 displayName="Unrelated Additions" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
@@ -48,6 +48,7 @@ These include:
 - Tiny Coal as well as Tiny Charcoal, as known from the mod Actually Additions.
 - Hammer made of wood, stone, iron, gold, diamond, for mining 3x3x1 areas, inspired by Tinkers Construct*.
 - Compressed Stones (6xCobblestone, 6xCobbled Deepsplate, 3xDirt, 3xSand, 3xRed Sand, 2xGravel, 1xAndesite, 1xGranite, 1xDiorite), as known from the mod Extra Utilities
+- A magnet to pickup items in a wider area
 
 *in this mod these work as pickaxe and shovel combined, maybe I'll make big spades too and split that, but not for now
 '''

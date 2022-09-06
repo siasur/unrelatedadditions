@@ -46,6 +46,12 @@ public class ModItems {
             new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
 
+    public static final RegistryObject<MagnetItem> MAGNET = ITEMS.register("magnet",
+            () -> new MagnetItem(new Item.Properties()
+                    .tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)
+                    .stacksTo(1)
+            ));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
