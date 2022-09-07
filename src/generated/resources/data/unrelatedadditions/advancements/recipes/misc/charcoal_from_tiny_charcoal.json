@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "unrelatedadditions:charcoal_from_tiny_charcoal"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tiny_charcoal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unrelatedadditions:tiny_charcoal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_tiny_charcoal",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "unrelatedadditions:charcoal_from_tiny_charcoal"
+    ]
+  }
+}

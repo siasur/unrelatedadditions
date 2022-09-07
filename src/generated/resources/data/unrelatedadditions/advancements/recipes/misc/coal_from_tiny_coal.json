@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "unrelatedadditions:coal_from_tiny_coal"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tiny_coal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unrelatedadditions:tiny_coal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_tiny_coal",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "unrelatedadditions:coal_from_tiny_coal"
+    ]
+  }
+}

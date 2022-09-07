@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "E": {
+      "tag": "forge:ender_pearls"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "L": {
+      "tag": "forge:gems/lapis"
+    },
+    "R": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "pattern": [
+    "LI ",
+    "IEI",
+    "IIR"
+  ],
+  "result": {
+    "item": "unrelatedadditions:magnet"
+  }
+}

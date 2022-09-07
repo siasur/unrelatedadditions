@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cobblestone": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "min": 9
+            },
+            "items": [
+              "minecraft:cobblestone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "unrelatedadditions:compressed_cobblestone"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_cobblestone",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "unrelatedadditions:compressed_cobblestone"
+    ]
+  }
+}

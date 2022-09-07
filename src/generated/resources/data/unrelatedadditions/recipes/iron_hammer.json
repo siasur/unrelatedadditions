@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "forge:ingots/iron"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "###",
+    "#S#",
+    " S "
+  ],
+  "result": {
+    "item": "unrelatedadditions:iron_hammer"
+  }
+}

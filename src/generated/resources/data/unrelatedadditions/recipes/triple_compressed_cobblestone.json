@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "compression",
+  "key": {
+    "#": {
+      "item": "unrelatedadditions:double_compressed_cobblestone"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "unrelatedadditions:triple_compressed_cobblestone"
+  }
+}

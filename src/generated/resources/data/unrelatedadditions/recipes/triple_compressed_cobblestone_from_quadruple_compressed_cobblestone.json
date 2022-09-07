@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "decompression",
+  "ingredients": [
+    {
+      "item": "unrelatedadditions:quadruple_compressed_cobblestone"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "unrelatedadditions:triple_compressed_cobblestone"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_double_compressed_red_sand": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "min": 9
+            },
+            "items": [
+              "unrelatedadditions:double_compressed_red_sand"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "unrelatedadditions:triple_compressed_red_sand"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_double_compressed_red_sand",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "unrelatedadditions:triple_compressed_red_sand"
+    ]
+  }
+}
