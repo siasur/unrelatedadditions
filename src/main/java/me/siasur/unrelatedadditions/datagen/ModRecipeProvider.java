@@ -115,6 +115,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("IIR")
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(recipeConsumer);
+
+        ShapedRecipeBuilder.shaped(ModBlocks.ANGEL_BLOCK.get())
+                .define('G', Tags.Items.INGOTS_GOLD)
+                .define('O', Items.OBSIDIAN)
+                .define('F', Items.FEATHER)
+                .pattern("GOG")
+                .pattern("OFO")
+                .pattern("GOG")
+                .unlockedBy(getHasName(Items.OBSIDIAN), has(Items.OBSIDIAN))
+                .save(recipeConsumer);
     }
 
     protected void hammerTool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, TagKey<Item> material, ItemLike unlockMaterial) {

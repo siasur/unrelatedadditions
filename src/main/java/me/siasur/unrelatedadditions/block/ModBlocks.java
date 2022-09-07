@@ -50,6 +50,7 @@ public class ModBlocks {
     public static RegistryObject<Block> TRIPLE_COMPRESSED_RED_SAND = registerBlock("triple_compressed_red_sand", ()-> new Block(BlockBehaviour.Properties.copy(Blocks.RED_SAND)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS, getCompressionTooltip(729));
     public static RegistryObject<Block> TRIPLE_COMPRESSED_SAND = registerBlock("triple_compressed_sand", ()-> new Block(BlockBehaviour.Properties.copy(Blocks.SAND)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS, getCompressionTooltip(729));
 
+    public static RegistryObject<AngelBlock> ANGEL_BLOCK = BLOCKS.register("angel_block", () -> new AngelBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).instabreak().lightLevel((state) -> 8)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockSupplier, CreativeModeTab tab) {
         return registerBlock(name, blockSupplier, tab, null);

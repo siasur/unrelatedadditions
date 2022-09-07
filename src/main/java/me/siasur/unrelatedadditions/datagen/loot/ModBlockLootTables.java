@@ -44,6 +44,8 @@ public class ModBlockLootTables extends BlockLoot {
 
         this.dropSelf(ModBlocks.COMPRESSED_DIORITE.get());
 
+        this.add(ModBlocks.ANGEL_BLOCK.get(), noDrop()); // Handled in code due to special "pickup"
+
     }
 
     @Override

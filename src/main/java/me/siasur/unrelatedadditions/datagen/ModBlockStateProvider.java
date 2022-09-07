@@ -39,5 +39,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.COMPRESSED_GRANITE.get());
         simpleBlock(ModBlocks.COMPRESSED_ANDESITE.get());
         simpleBlock(ModBlocks.COMPRESSED_DIORITE.get());
+
+        logBlock(ModBlocks.ANGEL_BLOCK.get());
     }
 }

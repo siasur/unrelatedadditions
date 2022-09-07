@@ -1,6 +1,7 @@
 package me.siasur.unrelatedadditions.item;
 
 import me.siasur.unrelatedadditions.UnrelatedAdditions;
+import me.siasur.unrelatedadditions.block.ModBlocks;
 import me.siasur.unrelatedadditions.inventory.ModCreativeModeTab;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -51,6 +52,8 @@ public class ModItems {
                     .tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)
                     .stacksTo(1)
             ));
+
+    public static final RegistryObject<AngelBlockItem> ANGEL_BLOCK = ITEMS.register("angel_block", () -> new AngelBlockItem(ModBlocks.ANGEL_BLOCK.get(), new Item.Properties().tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
