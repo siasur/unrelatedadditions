@@ -1,0 +1,7 @@
+{
+  "parent": "unrelatedadditions:block/flag_pole",
+  "textures": {
+    "flag": "minecraft:block/green_wool",
+    "pole": "unrelatedadditions:block/oak_flagpole"
+  }
+}

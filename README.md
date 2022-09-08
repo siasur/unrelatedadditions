@@ -1,21 +1,27 @@
 ![Banner](https://i.imgur.com/srbmXsm.png)
 
-Unrelated Additions is a collection of blocks, items and tools that my friends and I were missing in our current 1.19 world. There is no theme or connection between the various added things.
+# Unrelated Additions
 
- 
+### What is this?
+
+Unrelated Additions started as a collection of blocks, items and tools that my friends and I were missing in our current 1.19 world.  
+But since then it has already grown into something bigger. By now my goal is to implement as many features as I can from OpenBlocks - in my own interpretation.
+There is no bigger theme or connection between the various added things.
+
+### What do I get?
 
 So far this mod includes:
 
-1. Magnet  
-The magnet (when enabled, via SHIFT + right click) increases the pickup range up to three blocks around the player (other mods can exclude items from this using the tag forge:magnet_blacklist)  
+1. **Magnet**  
+The magnet (when enabled, via `SHIFT + right click`) increases the pickup range up to three blocks around the player (other mods can exclude items from this using the tag forge:magnet_blacklist)
 
-2. Hammer  
-Hammer come in all usual tool materials except Netherite, they are breaking a 3x3x1 area around the center block, at the moment they act like a pickaxe AND a shovel, this will probably change in the future and I'll create a big shovel too.  
+2. **Hammer**  
+The Hammers come in all usual tool materials except Netherite, they are breaking a 3x3x1 area around the center block, at the moment they act like a pickaxe AND a shovel, this will probably change in the future then I'll create a big shovel too.  
 
-3. Tiny (Char) Coal  
-Annoyed when you have 7 ores or raw meat that you need to smelt but don't want to waste the tiny bit of coal for the 8th item? Well break your coal into 8 pieces and smelt 1 item with each.  
+3. **Tiny (Char) Coal**  
+Annoyed when you have 7 ores or raw meat that you need to smelt but don't want to waste the tiny bit of coal for the 8th item? Well break your coal into 8 pieces and smelt 1 item with each.
 
-4. Compressed Block  
+4. **Compressed Block**  
 Are your chests overflowing with cobble, cobbled deepslate, dirt, (red) sand, gravel or even Granite, Diorite, Andesite? Just put 9 of the same block into the crafting table and compress them.  
     Each block can be compressed up to a certain point  
     - Cobble and Cobbled Deepslate: 6 times
@@ -23,17 +29,16 @@ Are your chests overflowing with cobble, cobbled deepslate, dirt, (red) sand, gr
     - Gravel: 2 times
     - Granite, Diorite, Andesite: 1 time
 
+5. **Angel Block**  
+The Angel Block can be placed in the air without need an adjacent block to it. When broken it doesn't drop as usual, instead it's put right back into the inventory.
+This can be useful to start a build high up in the air or the (not so endless) void of the end.
 
+6. **Colored Flags**  
+Always getting lost in caves? Don't remember your way home? Place these pointy flags along your way, and you will always find the way back.
 
+I'm also open to suggestions, but I won't promise anything.
 
+### More I should know?
 
-Everything added in this mod - at moment of implementation - either
-
- - comes from a mod that hasn't been ported to 1.19 yet
- - or was just something I wanted to implement myself regardles of (non)exitence in other mods.
-
- 
-
-I'm open to suggestions but I won't promise to implement everything.
-
-(I'm not an artist, all textures are to be considered "dev textures". If this gets traction and grows further I may invest in some proper textures)
+All textures are to be considered _Development Textures_, I'm not an artist  
+If this gets traction and grows further I may invest in some proper textures

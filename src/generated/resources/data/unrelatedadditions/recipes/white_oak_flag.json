@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "oak_flag",
+  "key": {
+    "B": {
+      "item": "minecraft:oak_slab"
+    },
+    "P": {
+      "tag": "forge:rods/wooden"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "PW",
+    "P ",
+    "B "
+  ],
+  "result": {
+    "item": "unrelatedadditions:white_oak_flag"
+  }
+}

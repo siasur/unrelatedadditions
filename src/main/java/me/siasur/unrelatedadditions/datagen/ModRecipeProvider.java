@@ -11,7 +11,6 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
@@ -125,6 +124,63 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("GOG")
                 .unlockedBy(getHasName(Items.OBSIDIAN), has(Items.OBSIDIAN))
                 .save(recipeConsumer);
+
+        oakFlagFromWool(recipeConsumer, ModBlocks.WHITE_OAK_FLAG.get(), Blocks.WHITE_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.ORANGE_OAK_FLAG.get(), Blocks.ORANGE_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.MAGENTA_OAK_FLAG.get(), Blocks.MAGENTA_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.LIGHT_BLUE_OAK_FLAG.get(), Blocks.LIGHT_BLUE_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.YELLOW_OAK_FLAG.get(), Blocks.YELLOW_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.LIME_OAK_FLAG.get(), Blocks.LIME_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.PINK_OAK_FLAG.get(), Blocks.PINK_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.GRAY_OAK_FLAG.get(), Blocks.GRAY_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.LIGHT_GRAY_OAK_FLAG.get(), Blocks.LIGHT_GRAY_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.CYAN_OAK_FLAG.get(), Blocks.CYAN_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.PURPLE_OAK_FLAG.get(), Blocks.PURPLE_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.BLUE_OAK_FLAG.get(), Blocks.BLUE_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.BROWN_OAK_FLAG.get(), Blocks.BROWN_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.GREEN_OAK_FLAG.get(), Blocks.GREEN_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.RED_OAK_FLAG.get(), Blocks.RED_WOOL);
+        oakFlagFromWool(recipeConsumer, ModBlocks.BLACK_OAK_FLAG.get(), Blocks.BLACK_WOOL);
+
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.ORANGE_OAK_FLAG.get(), Tags.Items.DYES_ORANGE);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.MAGENTA_OAK_FLAG.get(), Tags.Items.DYES_MAGENTA);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.LIGHT_BLUE_OAK_FLAG.get(), Tags.Items.DYES_LIGHT_BLUE);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.YELLOW_OAK_FLAG.get(), Tags.Items.DYES_YELLOW);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.LIME_OAK_FLAG.get(), Tags.Items.DYES_LIME);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.PINK_OAK_FLAG.get(), Tags.Items.DYES_PINK);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.GRAY_OAK_FLAG.get(), Tags.Items.DYES_GRAY);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.LIGHT_GRAY_OAK_FLAG.get(), Tags.Items.DYES_LIGHT_GRAY);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.CYAN_OAK_FLAG.get(), Tags.Items.DYES_CYAN);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.PURPLE_OAK_FLAG.get(), Tags.Items.DYES_PURPLE);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.BLUE_OAK_FLAG.get(), Tags.Items.DYES_BLUE);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.BROWN_OAK_FLAG.get(), Tags.Items.DYES_BROWN);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.GREEN_OAK_FLAG.get(), Tags.Items.DYES_GREEN);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.RED_OAK_FLAG.get(), Tags.Items.DYES_RED);
+        coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.BLACK_OAK_FLAG.get(), Tags.Items.DYES_BLACK);
+    }
+
+    protected void oakFlagFromWool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, ItemLike wool) {
+            ShapedRecipeBuilder
+                    .shaped(output)
+                    .define('B', Blocks.OAK_SLAB)
+                    .define('P', Tags.Items.RODS_WOODEN)
+                    .define('W', wool)
+                    .group("oak_flag")
+                    .pattern("PW")
+                    .pattern("P ")
+                    .pattern("B ")
+                    .unlockedBy(getHasName(wool), has(wool))
+                    .save(recipeConsumer);
+    }
+
+    protected void coloredOakFlagFromWhiteFlagAndDye(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, TagKey<Item> dye) {
+        ShapelessRecipeBuilder
+                .shapeless(output)
+                .requires(ModBlocks.WHITE_OAK_FLAG.get())
+                .requires(dye)
+                .group("dyed_oak_flag")
+                .unlockedBy(getHasName(ModBlocks.WHITE_OAK_FLAG.get()), has(ModBlocks.WHITE_OAK_FLAG.get()))
+                .save(recipeConsumer, getConversionRecipeModLoc(output, ModBlocks.WHITE_OAK_FLAG.get()));
     }
 
     protected void hammerTool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, TagKey<Item> material, ItemLike unlockMaterial) {
@@ -148,7 +204,7 @@ public class ModRecipeProvider extends RecipeProvider {
                     .requires(currentStage)
                     .group("decompression")
                     .unlockedBy(getHasName(currentStage), has(currentStage))
-                    .save(recipeConsumer, new ResourceLocation(UnrelatedAdditions.MODID, getConversionRecipeName(previousStage, currentStage)));
+                    .save(recipeConsumer, getConversionRecipeModLoc(previousStage, currentStage));
 
             ShapedRecipeBuilder
                     .shaped(currentStage)
@@ -162,5 +218,9 @@ public class ModRecipeProvider extends RecipeProvider {
 
             previousStage = currentStage;
         }
+    }
+
+    protected ResourceLocation getConversionRecipeModLoc(ItemLike result, ItemLike source) {
+        return new ResourceLocation(UnrelatedAdditions.MODID, getConversionRecipeName(result, source));
     }
 }

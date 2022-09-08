@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "unrelatedadditions:block/red_oak_flag",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "unrelatedadditions:block/red_oak_flag"
+    },
+    "facing=south": {
+      "model": "unrelatedadditions:block/red_oak_flag",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "unrelatedadditions:block/red_oak_flag",
+      "y": 270
+    }
+  }
+}

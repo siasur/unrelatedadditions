@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "unrelatedadditions:orange_oak_flag_from_white_oak_flag"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_oak_flag": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unrelatedadditions:white_oak_flag"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_white_oak_flag",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "unrelatedadditions:orange_oak_flag_from_white_oak_flag"
+    ]
+  }
+}

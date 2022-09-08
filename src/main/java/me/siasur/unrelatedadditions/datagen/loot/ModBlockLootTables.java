@@ -3,6 +3,7 @@ package me.siasur.unrelatedadditions.datagen.loot;
 import me.siasur.unrelatedadditions.block.ModBlocks;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlockLootTables extends BlockLoot {
@@ -45,6 +46,23 @@ public class ModBlockLootTables extends BlockLoot {
         this.dropSelf(ModBlocks.COMPRESSED_DIORITE.get());
 
         this.add(ModBlocks.ANGEL_BLOCK.get(), noDrop()); // Handled in code due to special "pickup"
+
+        this.dropSelf(ModBlocks.WHITE_OAK_FLAG     .get());
+        this.dropSelf(ModBlocks.ORANGE_OAK_FLAG    .get());
+        this.dropSelf(ModBlocks.MAGENTA_OAK_FLAG   .get());
+        this.dropSelf(ModBlocks.LIGHT_BLUE_OAK_FLAG.get());
+        this.dropSelf(ModBlocks.YELLOW_OAK_FLAG    .get());
+        this.dropSelf(ModBlocks.LIME_OAK_FLAG      .get());
+        this.dropSelf(ModBlocks.PINK_OAK_FLAG      .get());
+        this.dropSelf(ModBlocks.GRAY_OAK_FLAG      .get());
+        this.dropSelf(ModBlocks.LIGHT_GRAY_OAK_FLAG.get());
+        this.dropSelf(ModBlocks.CYAN_OAK_FLAG      .get());
+        this.dropSelf(ModBlocks.PURPLE_OAK_FLAG    .get());
+        this.dropSelf(ModBlocks.BLUE_OAK_FLAG      .get());
+        this.dropSelf(ModBlocks.BROWN_OAK_FLAG     .get());
+        this.dropSelf(ModBlocks.GREEN_OAK_FLAG     .get());
+        this.dropSelf(ModBlocks.RED_OAK_FLAG       .get());
+        this.dropSelf(ModBlocks.BLACK_OAK_FLAG     .get());
 
     }
 

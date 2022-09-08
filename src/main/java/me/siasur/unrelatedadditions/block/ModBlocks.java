@@ -8,7 +8,9 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -52,10 +54,29 @@ public class ModBlocks {
 
     public static RegistryObject<AngelBlock> ANGEL_BLOCK = BLOCKS.register("angel_block", () -> new AngelBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).instabreak().lightLevel((state) -> 8)));
 
+    public static RegistryObject<FlagPoleBlock> WHITE_OAK_FLAG      = registerBlock("white_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> ORANGE_OAK_FLAG     = registerBlock("orange_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> MAGENTA_OAK_FLAG    = registerBlock("magenta_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> LIGHT_BLUE_OAK_FLAG = registerBlock("light_blue_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> YELLOW_OAK_FLAG     = registerBlock("yellow_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> LIME_OAK_FLAG       = registerBlock("lime_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> PINK_OAK_FLAG       = registerBlock("pink_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> GRAY_OAK_FLAG       = registerBlock("gray_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> LIGHT_GRAY_OAK_FLAG = registerBlock("light_gray_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> CYAN_OAK_FLAG       = registerBlock("cyan_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> PURPLE_OAK_FLAG     = registerBlock("purple_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> BLUE_OAK_FLAG       = registerBlock("blue_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> BROWN_OAK_FLAG      = registerBlock("brown_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> GREEN_OAK_FLAG      = registerBlock("green_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> RED_OAK_FLAG        = registerBlock("red_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<FlagPoleBlock> BLACK_OAK_FLAG      = registerBlock("black_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+
+
+
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockSupplier, CreativeModeTab tab) {
         return registerBlock(name, blockSupplier, tab, null);
     }
-
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockSupplier, CreativeModeTab tab, @Nullable Component toolTip) {
         RegistryObject<T> block = BLOCKS.register(name, blockSupplier);

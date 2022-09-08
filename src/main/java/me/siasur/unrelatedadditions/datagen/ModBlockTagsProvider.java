@@ -45,6 +45,29 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.COMPRESSED_ANDESITE.get())
                 .add(ModBlocks.COMPRESSED_DIORITE.get());
 
+        this.tag(BlockTags.MINEABLE_WITH_AXE)
+                .addTag(ModTags.Blocks.OAK_FLAGS);
+
         this.tag(ModTags.Blocks.MINEABLE_WITH_HAMMER).addTag(BlockTags.MINEABLE_WITH_PICKAXE).addTag(BlockTags.MINEABLE_WITH_SHOVEL).add(Blocks.GLOWSTONE);
+
+        this.tag(ModTags.Blocks.OAK_FLAGS)
+                .add(ModBlocks.WHITE_OAK_FLAG.get())
+                .add(ModBlocks.ORANGE_OAK_FLAG.get())
+                .add(ModBlocks.MAGENTA_OAK_FLAG.get())
+                .add(ModBlocks.LIGHT_BLUE_OAK_FLAG.get())
+                .add(ModBlocks.YELLOW_OAK_FLAG.get())
+                .add(ModBlocks.LIME_OAK_FLAG.get())
+                .add(ModBlocks.PINK_OAK_FLAG.get())
+                .add(ModBlocks.GRAY_OAK_FLAG.get())
+                .add(ModBlocks.LIGHT_GRAY_OAK_FLAG.get())
+                .add(ModBlocks.CYAN_OAK_FLAG.get())
+                .add(ModBlocks.PURPLE_OAK_FLAG.get())
+                .add(ModBlocks.BLUE_OAK_FLAG.get())
+                .add(ModBlocks.BROWN_OAK_FLAG.get())
+                .add(ModBlocks.GREEN_OAK_FLAG.get())
+                .add(ModBlocks.RED_OAK_FLAG.get())
+                .add(ModBlocks.BLACK_OAK_FLAG.get());
+
+        this.tag(ModTags.Blocks.FLAGS).addTag(ModTags.Blocks.OAK_FLAGS);
     }
 }
