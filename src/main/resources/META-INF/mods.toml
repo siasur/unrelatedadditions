@@ -11,7 +11,7 @@ loaderVersion="[41,)" #mandatory This is typically bumped every Minecraft versio
 # Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
 license="GNU GPLv3"
 # A URL to refer people to when problems occur with this mod
-#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+issueTrackerURL="https://github.com/siasur/unrelatedadditions/issues" #optional
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
@@ -19,17 +19,17 @@ modId="unrelatedadditions" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 # ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
 # see the associated build.gradle script for how to populate this completely automatically during a build
-version="0.3.0-1.19" #mandatory
+version="${file.jarVersion}" #mandatory
  # A display name for the mod
 displayName="Unrelated Additions" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
-#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+displayURL="https://github.com/siasur/unrelatedadditions" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="examplemod.png" #optional
+logoFile="icon.png" #optional
 # A text field displayed in the mod UI
-credits="Actually Additions for the Tiny Coal idea, Tinkers Construct for the Hammer Idea, Extra Utilities for the Compressed Blocks Idea" #optional
+#credits="All the mods that inspired me, and the people who helped me build this one" #optional
 # A text field displayed in the mod UI
 authors="Siasur" #optional
 # Display Test controls the display for your mod in the server connection screen
@@ -42,15 +42,14 @@ authors="Siasur" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-This mod adds several unrelated additions to Minecraft.
+Unreladted Additions adds several unrelated but useful things to Minecraft.
 
-These include:
-- Tiny Coal as well as Tiny Charcoal, as known from the mod Actually Additions.
-- Hammer made of wood, stone, iron, gold, diamond, for mining 3x3x1 areas, inspired by Tinkers Construct*.
-- Compressed Stones (6xCobblestone, 6xCobbled Deepsplate, 3xDirt, 3xSand, 3xRed Sand, 2xGravel, 1xAndesite, 1xGranite, 1xDiorite), as known from the mod Extra Utilities
-- A magnet to pickup items in a wider area
+What started as a collection of blocks, items and tools that my friends and I were missing in our current 1.19 world has since grown into something bigger.
+By now my goal is it to implement many features, from similiar mods that are old and unmaintaind (like OpenBlocks) - in my own interpretation.
 
-*in this mod these work as pickaxe and shovel combined, maybe I'll make big spades too and split that, but not for now
+There is no bigger theme or connection between the various things added.
+
+For a full list of features see the linked Page.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.unrelatedadditions]] #optional
