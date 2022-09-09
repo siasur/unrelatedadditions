@@ -1,0 +1,21 @@
+{
+  "type": "mekanism:painting",
+  "chemicalInput": {
+    "amount": 256,
+    "pigment": "mekanism:blue"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "itemInput": {
+    "ingredient": {
+      "tag": "unrelatedadditions:flags/oak"
+    }
+  },
+  "output": {
+    "item": "unrelatedadditions:blue_oak_flag"
+  }
+}
