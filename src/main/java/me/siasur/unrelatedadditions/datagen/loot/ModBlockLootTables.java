@@ -3,7 +3,6 @@ package me.siasur.unrelatedadditions.datagen.loot;
 import me.siasur.unrelatedadditions.block.ModBlocks;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlockLootTables extends BlockLoot {
