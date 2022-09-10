@@ -58,5 +58,6 @@
 
   "itemGroup.unrelatedadditions": "Unrelated Additions",
 
-  "tooltip.unrelatedadditions.compressedblock": "%s Blocks"
+  "tooltip.unrelatedadditions.compressedblock": "%s Blocks",
+  "tooltip.unrelatedadditions.angelblock_placement": "Can be placed into the air, will appear below you"
 }
