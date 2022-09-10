@@ -3,6 +3,7 @@ package me.siasur.unrelatedadditions.item;
 import me.siasur.unrelatedadditions.UnrelatedAdditions;
 import me.siasur.unrelatedadditions.block.ModBlocks;
 import me.siasur.unrelatedadditions.inventory.ModCreativeModeTab;
+import me.siasur.unrelatedadditions.utils.ModTags;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tier;
@@ -28,27 +29,41 @@ public class ModItems {
                     FuelItem.DEFAULT_COAL_BURN_TIME / FuelItem.TINY_COAL_DIVISOR
             ));
 
-    public static final RegistryObject<HammerItem> WOODEN_HAMMER = registerHammer("wooden_hammer", Tiers.WOOD,
+    public static final RegistryObject<ExcavatorTool> WOODEN_HAMMER = registerHammer("wooden_hammer", Tiers.WOOD,
+            new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
+    );
+    public static final RegistryObject<ExcavatorTool> STONE_HAMMER = registerHammer("stone_hammer", Tiers.STONE,
+            new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
+    );
+    public static final RegistryObject<ExcavatorTool> IRON_HAMMER = registerHammer("iron_hammer", Tiers.IRON,
+            new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
+    );
+    public static final RegistryObject<ExcavatorTool> BRONZE_HAMMER = registerHammer("bronze_hammer", CustomTiers.BRONZE,
+            new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
+    );
+    public static final RegistryObject<ExcavatorTool> GOLDEN_HAMMER = registerHammer("golden_hammer", Tiers.GOLD,
+            new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
+    );
+    public static final RegistryObject<ExcavatorTool> DIAMOND_HAMMER = registerHammer("diamond_hammer", Tiers.DIAMOND,
             new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
 
-    public static final RegistryObject<HammerItem> STONE_HAMMER = registerHammer("stone_hammer", Tiers.STONE,
+    public static final RegistryObject<ExcavatorTool> WOODEN_SPADE = registerSpade("wooden_spade", Tiers.WOOD,
             new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
-
-    public static final RegistryObject<HammerItem> IRON_HAMMER = registerHammer("iron_hammer", Tiers.IRON,
+    public static final RegistryObject<ExcavatorTool> STONE_SPADE = registerSpade("stone_spade", Tiers.STONE,
             new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
-
-    public static final RegistryObject<HammerItem> BRONZE_HAMMER = registerHammer("bronze_hammer", CustomTiers.BRONZE,
+    public static final RegistryObject<ExcavatorTool> IRON_SPADE = registerSpade("iron_spade", Tiers.IRON,
             new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
-
-    public static final RegistryObject<HammerItem> GOLDEN_HAMMER = registerHammer("golden_hammer", Tiers.GOLD,
+    public static final RegistryObject<ExcavatorTool> BRONZE_SPADE = registerSpade("bronze_spade", CustomTiers.BRONZE,
             new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
-
-    public static final RegistryObject<HammerItem> DIAMOND_HAMMER = registerHammer("diamond_hammer", Tiers.DIAMOND,
+    public static final RegistryObject<ExcavatorTool> GOLDEN_SPADE = registerSpade("golden_spade", Tiers.GOLD,
+            new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
+    );
+    public static final RegistryObject<ExcavatorTool> DIAMOND_SPADE = registerSpade("diamond_spade", Tiers.DIAMOND,
             new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
 
@@ -64,11 +79,16 @@ public class ModItems {
         ITEMS.register(eventBus);
     }
 
-    private static RegistryObject<HammerItem> registerHammer(String name, Tier tier, Item.Properties properties) {
+    private static RegistryObject<ExcavatorTool> registerHammer(String name, Tier tier, Item.Properties properties) {
         return ITEMS.register(name,
-                () -> new HammerItem(tier, properties
-                        .stacksTo(1)
-                        //.durability(tier.getUses()*9)
-                ));
+                () ->
+                        new ExcavatorTool(tier, properties.stacksTo(1), ModTags.Blocks.MINEABLE_WITH_HAMMER
+                        ));
+    }
+    private static RegistryObject<ExcavatorTool> registerSpade(String name, Tier tier, Item.Properties properties) {
+        return ITEMS.register(name,
+                () ->
+                        new ExcavatorTool(tier, properties.stacksTo(1), ModTags.Blocks.MINEABLE_WITH_SPADE
+                        ));
     }
 }

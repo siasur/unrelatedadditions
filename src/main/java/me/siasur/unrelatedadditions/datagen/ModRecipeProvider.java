@@ -3,7 +3,7 @@ package me.siasur.unrelatedadditions.datagen;
 import me.siasur.unrelatedadditions.UnrelatedAdditions;
 import me.siasur.unrelatedadditions.block.FlagPoleBlock;
 import me.siasur.unrelatedadditions.block.ModBlocks;
-import me.siasur.unrelatedadditions.item.HammerItem;
+import me.siasur.unrelatedadditions.item.ExcavatorTool;
 import me.siasur.unrelatedadditions.item.ModItems;
 import me.siasur.unrelatedadditions.utils.ModTags;
 import mekanism.api.MekanismAPI;
@@ -120,6 +120,13 @@ public class ModRecipeProvider extends RecipeProvider {
         hammerTool(recipeConsumer, ModItems.GOLDEN_HAMMER.get(), Tags.Items.INGOTS_GOLD, Items.GOLD_INGOT);
         hammerTool(recipeConsumer, ModItems.DIAMOND_HAMMER.get(), Tags.Items.GEMS_DIAMOND, Items.DIAMOND);
 
+        spadeTool(recipeConsumer, ModItems.WOODEN_SPADE.get(), ItemTags.PLANKS, Items.STICK);
+        spadeTool(recipeConsumer, ModItems.STONE_SPADE.get(), ItemTags.STONE_TOOL_MATERIALS, Items.COBBLESTONE);
+        spadeTool(recipeConsumer, ModItems.IRON_SPADE.get(), Tags.Items.INGOTS_IRON, Items.IRON_INGOT);
+        conditionalSpadeTool(recipeConsumer, ModItems.BRONZE_SPADE, ModTags.Items.INGOTS_BRONZE, new NotCondition(new TagEmptyCondition(ModTags.Items.INGOTS_BRONZE.location())));
+        spadeTool(recipeConsumer, ModItems.GOLDEN_SPADE.get(), Tags.Items.INGOTS_GOLD, Items.GOLD_INGOT);
+        spadeTool(recipeConsumer, ModItems.DIAMOND_SPADE.get(), Tags.Items.GEMS_DIAMOND, Items.DIAMOND);
+
         ShapedRecipeBuilder.shaped(ModItems.MAGNET.get())
                 .define('L', Tags.Items.GEMS_LAPIS)
                 .define('I', Tags.Items.INGOTS_IRON)
@@ -226,10 +233,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(recipeConsumer, getConversionRecipeModLoc(output, ModBlocks.WHITE_OAK_FLAG.get()));
     }
 
-    protected void hammerTool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, TagKey<Item> material) {
-        hammerTool(recipeConsumer, output, material, null);
-    }
-
     protected void hammerTool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, TagKey<Item> material, @Nullable ItemLike unlockMaterial) {
         var builder = ShapedRecipeBuilder
                 .shaped(output)
@@ -249,7 +252,7 @@ public class ModRecipeProvider extends RecipeProvider {
         builder.save(recipeConsumer);
     }
 
-    protected void conditionalHammerTool(Consumer<FinishedRecipe> recipeConsumer, RegistryObject<HammerItem> output, TagKey<Item> material, ICondition condition) {
+    protected void conditionalHammerTool(Consumer<FinishedRecipe> recipeConsumer, RegistryObject<ExcavatorTool> output, TagKey<Item> material, ICondition condition) {
         var outLoc = output.getId();
         ConditionalRecipe.builder()
                 .addCondition(condition)
@@ -263,6 +266,44 @@ public class ModRecipeProvider extends RecipeProvider {
                                 .pattern(" S ")
                                 .unlockedBy("has_" + material.location().getPath(), has(material))
                         ::save
+                )
+                .generateAdvancement(new ResourceLocation(outLoc.getNamespace(), "recipes/unrelatedadditions/" + outLoc.getPath()))
+                .build(recipeConsumer, new ResourceLocation(UnrelatedAdditions.MODID, outLoc.getPath()));
+    }
+
+    protected void spadeTool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, TagKey<Item> material, @Nullable ItemLike unlockMaterial) {
+        var builder = ShapedRecipeBuilder
+                .shaped(output)
+                .define('S', Tags.Items.RODS_WOODEN)
+                .define('#', material)
+                .pattern(" S ")
+                .pattern("#S#")
+                .pattern("###");
+
+        if (unlockMaterial != null) {
+            builder.unlockedBy(getHasName(unlockMaterial), has(unlockMaterial));
+        }
+        else {
+            builder.unlockedBy("has_" + material.location().getPath(), has(material));
+        }
+
+        builder.save(recipeConsumer);
+    }
+
+    protected void conditionalSpadeTool(Consumer<FinishedRecipe> recipeConsumer, RegistryObject<ExcavatorTool> output, TagKey<Item> material, ICondition condition) {
+        var outLoc = output.getId();
+        ConditionalRecipe.builder()
+                .addCondition(condition)
+                .addRecipe(
+                        ShapedRecipeBuilder
+                                .shaped(output.get())
+                                .define('S', Tags.Items.RODS_WOODEN)
+                                .define('#', material)
+                                .pattern(" S ")
+                                .pattern("#S#")
+                                .pattern("###")
+                                .unlockedBy("has_" + material.location().getPath(), has(material))
+                                ::save
                 )
                 .generateAdvancement(new ResourceLocation(outLoc.getNamespace(), "recipes/unrelatedadditions/" + outLoc.getPath()))
                 .build(recipeConsumer, new ResourceLocation(UnrelatedAdditions.MODID, outLoc.getPath()));

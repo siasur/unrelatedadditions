@@ -48,7 +48,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.MINEABLE_WITH_AXE)
                 .addTag(ModTags.Blocks.OAK_FLAGS);
 
-        this.tag(ModTags.Blocks.MINEABLE_WITH_HAMMER).addTag(BlockTags.MINEABLE_WITH_PICKAXE).addTag(BlockTags.MINEABLE_WITH_SHOVEL).add(Blocks.GLOWSTONE);
+        this.tag(ModTags.Blocks.MINEABLE_WITH_HAMMER).addTag(BlockTags.MINEABLE_WITH_PICKAXE).add(Blocks.GLOWSTONE);
+
+        this.tag(ModTags.Blocks.MINEABLE_WITH_SPADE).addTag(BlockTags.MINEABLE_WITH_SHOVEL);
 
         this.tag(ModTags.Blocks.OAK_FLAGS)
                 .add(ModBlocks.WHITE_OAK_FLAG.get())

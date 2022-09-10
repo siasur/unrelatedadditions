@@ -2,11 +2,11 @@ package me.siasur.unrelatedadditions.item;
 
 import me.siasur.unrelatedadditions.inventory.ModCreativeModeTab;
 import me.siasur.unrelatedadditions.utils.BlockHitSideDetection;
-import me.siasur.unrelatedadditions.utils.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DiggerItem;
@@ -21,16 +21,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class HammerItem extends DiggerItem {
+public class ExcavatorTool extends DiggerItem {
 
     private static float _DAMAGE = 1f;
     private static float _ATTACKSPEED = -2.8f;
     private static float DURABILITY_MULTIPLIER = 5;
 
+    private TagKey<Block> targetTag;
+
     private static CreativeModeTab _ADDITIONAL_CREATIVE_TAB = ModCreativeModeTab.TAB_UNRELATEDADDITIONS;
 
-    public HammerItem(Tier toolTier, Properties properties) {
-        super(_DAMAGE, _ATTACKSPEED, toolTier, ModTags.Blocks.MINEABLE_WITH_HAMMER, properties.durability(Math.round(toolTier.getUses()*DURABILITY_MULTIPLIER)));
+    public ExcavatorTool(Tier toolTier, Properties properties, TagKey<Block> targetTag) {
+        super(_DAMAGE, _ATTACKSPEED, toolTier, targetTag, properties.durability(Math.round(toolTier.getUses()*DURABILITY_MULTIPLIER)));
+        this.targetTag = targetTag;
     }
 
     @Override
@@ -43,7 +46,7 @@ public class HammerItem extends DiggerItem {
         Direction hitSide = BlockHitSideDetection.getHitSideByPlayer(serverPlayer);
         BlockState blockState = level.getBlockState(pos);
 
-        if(!blockState.is(ModTags.Blocks.MINEABLE_WITH_HAMMER))
+        if(!blockState.is(targetTag))
             return super.onBlockStartBreak(itemstack, pos, serverPlayer);
 
         // Get all BlockPositions around the broken block with respect to the hitSide
@@ -52,7 +55,7 @@ public class HammerItem extends DiggerItem {
         for (BlockPos additionalPos: additionalPositions) {
             BlockState additionalState = level.getBlockState(additionalPos);
 
-            if (additionalState.isAir() || !additionalState.is(ModTags.Blocks.MINEABLE_WITH_HAMMER))
+            if (additionalState.isAir() || !additionalState.is(targetTag))
                 continue;
 
             float destroySpeed = additionalState.getDestroySpeed(level, additionalPos);

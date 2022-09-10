@@ -9,6 +9,13 @@
   "item.unrelatedadditions.golden_hammer": "Golden Hammer",
   "item.unrelatedadditions.diamond_hammer": "Diamond Hammer",
 
+  "item.unrelatedadditions.wooden_spade": "Wooden Spade",
+  "item.unrelatedadditions.stone_spade": "Stone Spade",
+  "item.unrelatedadditions.iron_spade": "Iron Spade",
+  "item.unrelatedadditions.bronze_spade": "Bronze Spade",
+  "item.unrelatedadditions.golden_spade": "Golden Spade",
+  "item.unrelatedadditions.diamond_spade": "Diamond Spade",
+
   "item.unrelatedadditions.magnet": "Magnet",
 
   "block.unrelatedadditions.compressed_andesite": "Compressed Andesite",

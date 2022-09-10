@@ -13,6 +13,7 @@ public class ModTags {
     public class Blocks {
 
         public static final TagKey<Block> MINEABLE_WITH_HAMMER = tag("mineable/hammer");
+        public static final TagKey<Block> MINEABLE_WITH_SPADE = tag("mineable/spade");
         public static final TagKey<Block> FLAGS = tag("flags");
         public static final TagKey<Block> OAK_FLAGS = tag("flags/oak");
         public static final TagKey<Block> NEEDS_BRONZE_TOOL = forgeTag("needs_bronze_tool");
