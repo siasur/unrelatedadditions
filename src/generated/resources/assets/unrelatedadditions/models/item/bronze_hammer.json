@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "unrelatedadditions:item/bronze_hammer"
+  }
+}

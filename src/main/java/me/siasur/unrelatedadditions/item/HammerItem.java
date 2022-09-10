@@ -25,11 +25,12 @@ public class HammerItem extends DiggerItem {
 
     private static float _DAMAGE = 1f;
     private static float _ATTACKSPEED = -2.8f;
+    private static float DURABILITY_MULTIPLIER = 5;
 
     private static CreativeModeTab _ADDITIONAL_CREATIVE_TAB = ModCreativeModeTab.TAB_UNRELATEDADDITIONS;
 
     public HammerItem(Tier toolTier, Properties properties) {
-        super(_DAMAGE, _ATTACKSPEED, toolTier, ModTags.Blocks.MINEABLE_WITH_HAMMER, properties);
+        super(_DAMAGE, _ATTACKSPEED, toolTier, ModTags.Blocks.MINEABLE_WITH_HAMMER, properties.durability(Math.round(toolTier.getUses()*DURABILITY_MULTIPLIER)));
     }
 
     @Override

@@ -5,6 +5,7 @@ import me.siasur.unrelatedadditions.block.ModBlocks;
 import me.siasur.unrelatedadditions.inventory.ModCreativeModeTab;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -39,6 +40,10 @@ public class ModItems {
             new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
 
+    public static final RegistryObject<HammerItem> BRONZE_HAMMER = registerHammer("bronze_hammer", CustomTiers.BRONZE,
+            new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
+    );
+
     public static final RegistryObject<HammerItem> GOLDEN_HAMMER = registerHammer("golden_hammer", Tiers.GOLD,
             new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)
     );
@@ -59,11 +64,11 @@ public class ModItems {
         ITEMS.register(eventBus);
     }
 
-    private static RegistryObject<HammerItem> registerHammer(String name, Tiers tier, Item.Properties properties) {
+    private static RegistryObject<HammerItem> registerHammer(String name, Tier tier, Item.Properties properties) {
         return ITEMS.register(name,
                 () -> new HammerItem(tier, properties
                         .stacksTo(1)
-                        .durability(tier.getUses()*9)
+                        //.durability(tier.getUses()*9)
                 ));
     }
 }

@@ -1,17 +1,15 @@
 package me.siasur.unrelatedadditions.datagen;
 
 import me.siasur.unrelatedadditions.UnrelatedAdditions;
+import me.siasur.unrelatedadditions.block.FlagPoleBlock;
 import me.siasur.unrelatedadditions.block.ModBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ForgeRegistry;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {
@@ -68,7 +66,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         flagPoleBlock(ModBlocks.BLACK_OAK_FLAG     .get(), oakPoleLoc, new ResourceLocation("minecraft", "block/" + ForgeRegistries.BLOCKS.getKey(Blocks.BLACK_WOOL).getPath()));
     }
 
-    protected void flagPoleBlock(Block block, ResourceLocation poleTexture, ResourceLocation flagTexture) {
+    protected void flagPoleBlock(FlagPoleBlock block, ResourceLocation poleTexture, ResourceLocation flagTexture) {
         ResourceLocation blockLoc = ForgeRegistries.BLOCKS.getKey(block);
         ModelFile flagPoleModelFile = models().withExistingParent(blockLoc.toString(), new ResourceLocation(UnrelatedAdditions.MODID, "block/flag_pole"))
                 .texture("pole", poleTexture)

@@ -3,6 +3,7 @@ package me.siasur.unrelatedadditions.datagen;
 import me.siasur.unrelatedadditions.UnrelatedAdditions;
 import me.siasur.unrelatedadditions.block.FlagPoleBlock;
 import me.siasur.unrelatedadditions.block.ModBlocks;
+import me.siasur.unrelatedadditions.item.HammerItem;
 import me.siasur.unrelatedadditions.item.ModItems;
 import me.siasur.unrelatedadditions.utils.ModTags;
 import mekanism.api.MekanismAPI;
@@ -21,9 +22,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
+import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
+import net.minecraftforge.common.crafting.conditions.NotCondition;
+import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
 import net.minecraftforge.registries.RegistryObject;
 
+import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider {
@@ -110,6 +116,7 @@ public class ModRecipeProvider extends RecipeProvider {
         hammerTool(recipeConsumer, ModItems.WOODEN_HAMMER.get(), ItemTags.PLANKS, Items.STICK);
         hammerTool(recipeConsumer, ModItems.STONE_HAMMER.get(), ItemTags.STONE_TOOL_MATERIALS, Items.COBBLESTONE);
         hammerTool(recipeConsumer, ModItems.IRON_HAMMER.get(), Tags.Items.INGOTS_IRON, Items.IRON_INGOT);
+        conditionalHammerTool(recipeConsumer, ModItems.BRONZE_HAMMER, ModTags.Items.INGOTS_BRONZE, new NotCondition(new TagEmptyCondition(ModTags.Items.INGOTS_BRONZE.location())));
         hammerTool(recipeConsumer, ModItems.GOLDEN_HAMMER.get(), Tags.Items.INGOTS_GOLD, Items.GOLD_INGOT);
         hammerTool(recipeConsumer, ModItems.DIAMOND_HAMMER.get(), Tags.Items.GEMS_DIAMOND, Items.DIAMOND);
 
@@ -219,16 +226,46 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(recipeConsumer, getConversionRecipeModLoc(output, ModBlocks.WHITE_OAK_FLAG.get()));
     }
 
-    protected void hammerTool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, TagKey<Item> material, ItemLike unlockMaterial) {
-        ShapedRecipeBuilder
+    protected void hammerTool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, TagKey<Item> material) {
+        hammerTool(recipeConsumer, output, material, null);
+    }
+
+    protected void hammerTool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, TagKey<Item> material, @Nullable ItemLike unlockMaterial) {
+        var builder = ShapedRecipeBuilder
                 .shaped(output)
                 .define('S', Tags.Items.RODS_WOODEN)
                 .define('#', material)
                 .pattern("###")
                 .pattern("#S#")
-                .pattern(" S ")
-                .unlockedBy(getHasName(unlockMaterial), has(unlockMaterial))
-                .save(recipeConsumer);
+                .pattern(" S ");
+
+        if (unlockMaterial != null) {
+            builder.unlockedBy(getHasName(unlockMaterial), has(unlockMaterial));
+        }
+        else {
+            builder.unlockedBy("has_" + material.location().getPath(), has(material));
+        }
+
+        builder.save(recipeConsumer);
+    }
+
+    protected void conditionalHammerTool(Consumer<FinishedRecipe> recipeConsumer, RegistryObject<HammerItem> output, TagKey<Item> material, ICondition condition) {
+        var outLoc = output.getId();
+        ConditionalRecipe.builder()
+                .addCondition(condition)
+                .addRecipe(
+                        ShapedRecipeBuilder
+                                .shaped(output.get())
+                                .define('S', Tags.Items.RODS_WOODEN)
+                                .define('#', material)
+                                .pattern("###")
+                                .pattern("#S#")
+                                .pattern(" S ")
+                                .unlockedBy("has_" + material.location().getPath(), has(material))
+                        ::save
+                )
+                .generateAdvancement(new ResourceLocation(outLoc.getNamespace(), "recipes/unrelatedadditions/" + outLoc.getPath()))
+                .build(recipeConsumer, new ResourceLocation(UnrelatedAdditions.MODID, outLoc.getPath()));
     }
 
     protected void compressedBlocks(Consumer<FinishedRecipe> recipeConsumer, ItemLike baseItemLike, ItemLike... compressionChain) {

@@ -1,6 +1,6 @@
-// 1.19	2022-09-08T14:04:05.3094551	Tags for minecraft:item
+// 1.19	2022-09-10T12:56:57.2709521	Tags for minecraft:item
 902a54e4704d82cde1907ae36fd1c036ec7527e5 data/forge/tags/items/magnet_blacklist.json
-79963834f2df76b3b6f4e77a674207a062705692 data/minecraft/tags/items/cluster_max_harvestables.json
+3960e32a925f22d046f98c9d562ffb5e315cfe4c data/minecraft/tags/items/cluster_max_harvestables.json
 7399625158c39aa3b08de9f9c34d6105bb29951b data/minecraft/tags/items/coals.json
 fa69ca8f7fe27806ef56c8d34509f037840e8d19 data/unrelatedadditions/tags/items/flags.json
 b737c54a712603114b6d933e19deaf2fdc6af7cb data/unrelatedadditions/tags/items/flags/oak.json
