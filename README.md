@@ -15,8 +15,8 @@ So far this mod includes:
 1. **Magnet**  
 The magnet (when enabled, via `SHIFT + right click`) increases the pickup range up to three blocks around the player (other mods can exclude items from this using the tag forge:magnet_blacklist)
 
-2. **Hammer**  
-The Hammers come in all usual tool materials except Netherite, they are breaking a 3x3x1 area around the center block, at the moment they act like a pickaxe AND a shovel, this will probably change in the future then I'll create a big shovel too.  
+2. **Hammer**  and **Spade**  
+Need to make some room underground for your big project or want to quickly farm all the sand for your glass dome? These tools will affect a 3x3x1 Area around the targetet block when breaking it. Hammers act like Pickaxes, and Spades act like Shovels. Each comes in all usual tool materials (+ Bronze\*) except Netherite. 
 
 3. **Tiny (Char) Coal**  
 Annoyed when you have 7 ores or raw meat that you need to smelt but don't want to waste the tiny bit of coal for the 8th item? Well break your coal into 8 pieces and smelt 1 item with each.
@@ -33,10 +33,12 @@ Are your chests overflowing with cobble, cobbled deepslate, dirt, (red) sand, gr
 The Angel Block can be placed in the air without need an adjacent block to it. When broken it doesn't drop as usual, instead it's put right back into the inventory.
 This can be useful to start a build high up in the air or the (not so endless) void of the end.
 
-6. **Colored Flags**  
+6. **Colored Flag**  
 Always getting lost in caves? Don't remember your way home? Place these pointy flags along your way, and you will always find the way back.
 
-I'm also open to suggestions, but I won't promise anything.
+I'm also open to suggestions, but I won't promise anything.  
+
+_\* Requires a Mod that adds Bronze Ingots to be crafted_
 
 ### More I should know?
 
