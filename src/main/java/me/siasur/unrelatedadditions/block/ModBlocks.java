@@ -72,7 +72,7 @@ public class ModBlocks {
     public static RegistryObject<FlagPoleBlock> RED_OAK_FLAG        = registerBlock("red_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD)         .lightLevel((state) -> state.getValue(BlockStateProperties.LIT) ? 4 : 0).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
     public static RegistryObject<FlagPoleBlock> BLACK_OAK_FLAG      = registerBlock("black_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD)       .lightLevel((state) -> state.getValue(BlockStateProperties.LIT) ? 4 : 0).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
 
-
+    public static RegistryObject<RopeLadderBlock> ROPE_LADDER_BLOCK = BLOCKS.register("rope_ladder_block", () -> new RopeLadderBlock(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.4F).sound(SoundType.LADDER).noOcclusion()));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockSupplier, CreativeModeTab tab) {

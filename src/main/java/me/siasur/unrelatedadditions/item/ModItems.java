@@ -75,6 +75,8 @@ public class ModItems {
 
     public static final RegistryObject<AngelBlockItem> ANGEL_BLOCK = ITEMS.register("angel_block", () -> new AngelBlockItem(ModBlocks.ANGEL_BLOCK.get(), new Item.Properties().tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)));
 
+    public static final RegistryObject<RopeLadderBlockItem> ROPE_LADDER_BLOCK = ITEMS.register("rope_ladder_block", () -> new RopeLadderBlockItem(ModBlocks.ROPE_LADDER_BLOCK.get(), new Item.Properties().tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

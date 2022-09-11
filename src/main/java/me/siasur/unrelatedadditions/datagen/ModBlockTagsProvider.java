@@ -7,6 +7,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -71,5 +72,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.BLACK_OAK_FLAG.get());
 
         this.tag(ModTags.Blocks.FLAGS).addTag(ModTags.Blocks.OAK_FLAGS);
+
+        this.tag(BlockTags.CLIMBABLE).add(ModBlocks.ROPE_LADDER_BLOCK.get());
     }
 }
