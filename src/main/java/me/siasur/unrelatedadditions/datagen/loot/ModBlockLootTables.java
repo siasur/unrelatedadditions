@@ -63,7 +63,7 @@ public class ModBlockLootTables extends BlockLoot {
         this.dropSelf(ModBlocks.RED_OAK_FLAG       .get());
         this.dropSelf(ModBlocks.BLACK_OAK_FLAG     .get());
 
-        this.dropSelf(ModBlocks.ROPE_LADDER_BLOCK.get());
+        this.dropSelf(ModBlocks.ROPE_LADDER.get());
 
     }
 

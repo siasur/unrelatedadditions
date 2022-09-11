@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "tag": "forge:string"
+    },
+    "_": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "I_I",
+    "I_I",
+    "I_I"
+  ],
+  "result": {
+    "count": 6,
+    "item": "unrelatedadditions:rope_ladder"
+  }
+}

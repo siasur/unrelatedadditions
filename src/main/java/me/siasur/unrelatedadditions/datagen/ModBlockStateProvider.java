@@ -65,7 +65,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         flagPoleBlock(ModBlocks.RED_OAK_FLAG       .get(), oakPoleLoc, new ResourceLocation("minecraft", "block/" + ForgeRegistries.BLOCKS.getKey(Blocks.RED_WOOL).getPath()));
         flagPoleBlock(ModBlocks.BLACK_OAK_FLAG     .get(), oakPoleLoc, new ResourceLocation("minecraft", "block/" + ForgeRegistries.BLOCKS.getKey(Blocks.BLACK_WOOL).getPath()));
 
-        horizontalBlock(ModBlocks.ROPE_LADDER_BLOCK.get(), models().withExistingParent(ModBlocks.ROPE_LADDER_BLOCK.getKey().location().getPath(),mcLoc("block/ladder"))
+        horizontalBlock(ModBlocks.ROPE_LADDER.get(), models().withExistingParent(ModBlocks.ROPE_LADDER.getKey().location().getPath(),mcLoc("block/ladder"))
                 .texture("texture", modLoc("block/rope_ladder"))
                 .renderType(mcLoc("cutout"))
         );

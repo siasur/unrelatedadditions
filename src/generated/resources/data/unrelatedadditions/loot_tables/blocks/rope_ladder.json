@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "unrelatedadditions:rope_ladder_block"
+          "name": "unrelatedadditions:rope_ladder"
         }
       ],
       "rolls": 1.0

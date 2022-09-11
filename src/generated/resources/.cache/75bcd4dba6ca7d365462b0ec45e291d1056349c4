@@ -1,5 +1,5 @@
-// 1.19	2022-09-11T10:44:34.0174125	Tags for minecraft:block
-c3949017ec7b864c241f27fc773e1eca45e82d52 data/minecraft/tags/blocks/climbable.json
+// 1.19	2022-09-11T18:45:11.4814098	Tags for minecraft:block
+d7a02d086f8e8c2b9bcc681298db0847c3f0f96b data/minecraft/tags/blocks/climbable.json
 fa69ca8f7fe27806ef56c8d34509f037840e8d19 data/minecraft/tags/blocks/mineable/axe.json
 7f45df9d3c957cf60996fc8d3ccb195f48b9a27a data/minecraft/tags/blocks/mineable/pickaxe.json
 fa69ca8f7fe27806ef56c8d34509f037840e8d19 data/unrelatedadditions/tags/blocks/flags.json

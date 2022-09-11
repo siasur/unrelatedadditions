@@ -72,6 +72,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         this.tag(ModTags.Blocks.FLAGS).addTag(ModTags.Blocks.OAK_FLAGS);
 
-        this.tag(BlockTags.CLIMBABLE).add(ModBlocks.ROPE_LADDER_BLOCK.get());
+        this.tag(BlockTags.CLIMBABLE).add(ModBlocks.ROPE_LADDER.get());
     }
 }

@@ -43,8 +43,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.MAGNET.get());
 
-        var ropeLadderLoc = ModItems.ROPE_LADDER_BLOCK.getId();
-        getBuilder(ModItems.ROPE_LADDER_BLOCK.get().toString())
+        var ropeLadderLoc = ModItems.ROPE_LADDER.getId();
+        getBuilder(ModItems.ROPE_LADDER.get().toString())
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", new ResourceLocation(ropeLadderLoc.getNamespace(), "block/rope_ladder"));
     }

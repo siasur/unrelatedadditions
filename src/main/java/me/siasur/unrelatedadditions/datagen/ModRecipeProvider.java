@@ -37,8 +37,8 @@ import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider {
 
-    public ModRecipeProvider(DataGenerator p_125973_) {
-        super(p_125973_);
+    public ModRecipeProvider(DataGenerator dataGenerator) {
+        super(dataGenerator);
     }
 
     @Override
@@ -184,6 +184,15 @@ public class ModRecipeProvider extends RecipeProvider {
         coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.RED_OAK_FLAG.get(), Tags.Items.DYES_RED);
         coloredOakFlagFromWhiteFlagAndDye(recipeConsumer, ModBlocks.BLACK_OAK_FLAG.get(), Tags.Items.DYES_BLACK);
 
+        ShapedRecipeBuilder.shaped(ModBlocks.ROPE_LADDER.get(), 6)
+                .define('_', Tags.Items.RODS_WOODEN)
+                .define('I', Tags.Items.STRING)
+                .pattern("I_I")
+                .pattern("I_I")
+                .pattern("I_I")
+                .unlockedBy("has_sticks", has(Tags.Items.RODS_WOODEN))
+                .save(recipeConsumer);
+
         mekanismOakFlagPainting(recipeConsumer, "white", ModBlocks.WHITE_OAK_FLAG);
         mekanismOakFlagPainting(recipeConsumer, "orange", ModBlocks.ORANGE_OAK_FLAG);
         mekanismOakFlagPainting(recipeConsumer, "magenta", ModBlocks.MAGENTA_OAK_FLAG);
@@ -200,6 +209,7 @@ public class ModRecipeProvider extends RecipeProvider {
         mekanismOakFlagPainting(recipeConsumer, "green", ModBlocks.GREEN_OAK_FLAG);
         mekanismOakFlagPainting(recipeConsumer, "red", ModBlocks.RED_OAK_FLAG);
         mekanismOakFlagPainting(recipeConsumer, "black", ModBlocks.BLACK_OAK_FLAG);
+
     }
 
     private static void mekanismOakFlagPainting(Consumer<FinishedRecipe> recipeConsumer, String colorName, RegistryObject<FlagPoleBlock> output) {

@@ -8,7 +8,7 @@ public class ModCreativeModeTab {
     public static final CreativeModeTab TAB_UNRELATEDADDITIONS = new CreativeModeTab("unrelatedadditions") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ModItems.TINY_CHARCOAL.get());
+            return new ItemStack(ModItems.DIAMOND_HAMMER.get());
         }
     };
 }
