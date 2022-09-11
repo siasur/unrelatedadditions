@@ -5,8 +5,7 @@
 ### What is this?
 
 Unrelated Additions started as a collection of blocks, items and tools that my friends and I were missing in our current 1.19 world.  
-But since then it has already grown into something bigger. By now my goal is to implement as many features as I can from OpenBlocks - in my own interpretation.
-There is no bigger theme or connection between the various added things.
+But since then it has already grown into something bigger. By now my goal is it to implement many features, from similar mods that are old and unmaintained (like OpenBlocks) - in my own interpretation. There is no bigger theme or connection between the various added things.
 
 ### What do I get?
 
@@ -16,7 +15,7 @@ So far this mod includes:
 The magnet (when enabled, via `SHIFT + right click`) increases the pickup range up to three blocks around the player (other mods can exclude items from this using the tag forge:magnet_blacklist)
 
 2. **Hammer**  and **Spade**  
-Need to make some room underground for your big project or want to quickly farm all the sand for your glass dome? These tools will affect a 3x3x1 Area around the targetet block when breaking it. Hammers act like Pickaxes, and Spades act like Shovels. Each comes in all usual tool materials (+ Bronze\*) except Netherite. 
+Need to make some room underground for your big project or want to quickly farm all the sand for your glass dome? These tools will affect a 3x3x1 Area around the targeted block when breaking it. Hammers act like Pickaxes, and Spades act like Shovels. Each comes in all usual tool materials (+ Bronze\*) except Netherite. 
 
 3. **Tiny (Char) Coal**  
 Annoyed when you have 7 ores or raw meat that you need to smelt but don't want to waste the tiny bit of coal for the 8th item? Well break your coal into 8 pieces and smelt 1 item with each.

@@ -46,7 +46,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.COMPRESSED_DIORITE.get());
 
         this.tag(BlockTags.MINEABLE_WITH_AXE)
-                .addTag(ModTags.Blocks.OAK_FLAGS);
+                .addTag(ModTags.Blocks.OAK_FLAGS)
+                .add(ModBlocks.ROPE_LADDER.get());
 
         this.tag(ModTags.Blocks.MINEABLE_WITH_HAMMER).addTag(BlockTags.MINEABLE_WITH_PICKAXE).add(Blocks.GLOWSTONE);
 
