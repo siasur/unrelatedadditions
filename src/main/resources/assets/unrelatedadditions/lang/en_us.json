@@ -64,6 +64,8 @@
 
   "block.unrelatedadditions.angel_block": "Angel Block",
 
+  "block.unrelatedadditions.rope_ladder_block": "Rope Ladder",
+
   "itemGroup.unrelatedadditions": "Unrelated Additions",
 
   "tooltip.unrelatedadditions.compressedblock": "%s Blocks",

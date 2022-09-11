@@ -36,6 +36,9 @@ This can be useful to start a build high up in the air or the (not so endless) v
 6. **Colored Flag**  
 Always getting lost in caves? Don't remember your way home? Place these pointy flags along your way, and you will always find the way back.
 
+7. **Rope ladder**  
+Looking for an easy way down a ravine or cliff? You can't place normal ladders because you're standing on an overhang, and you don't feel like digging a staircase? Place the rope ladder on the edge and climb down, it doesn't get easier.
+
 I'm also open to suggestions, but I won't promise anything.  
 
 _\* Requires a Mod that adds Bronze Ingots to be crafted_
