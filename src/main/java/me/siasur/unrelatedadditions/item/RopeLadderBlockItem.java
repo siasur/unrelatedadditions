@@ -1,5 +1,6 @@
 package me.siasur.unrelatedadditions.item;
 
+import me.siasur.unrelatedadditions.block.RopeLadderBlock;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,6 +15,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.Fluids;
 
 public class RopeLadderBlockItem extends BlockItem {
     public RopeLadderBlockItem(Block p_40565_, Properties p_40566_) {
@@ -59,7 +61,7 @@ public class RopeLadderBlockItem extends BlockItem {
                 BlockState nextBlockState = level.getBlockState(nextBlockPos);
                 boolean canReplaceBlock = nextBlockState.getBlock().canBeReplaced(nextBlockState, placeContext);
                 // Place Rope Ladder when possible
-                continuePlacing = canReplaceBlock && level.setBlock(nextBlockPos, placementState, Block.UPDATE_ALL_IMMEDIATE);
+                continuePlacing = canReplaceBlock && level.setBlock(nextBlockPos, placementState.setValue(RopeLadderBlock.WATERLOGGED, nextBlockState.getFluidState().is(Fluids.WATER)), Block.UPDATE_ALL_IMMEDIATE);
 
                 nextBlockPos = nextBlockPos.below();
             } while (continuePlacing && ++count < limit);
