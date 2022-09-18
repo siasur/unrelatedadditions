@@ -2,12 +2,10 @@ package me.siasur.unrelatedadditions.item;
 
 import me.siasur.unrelatedadditions.UnrelatedAdditions;
 import me.siasur.unrelatedadditions.block.ModBlocks;
+import me.siasur.unrelatedadditions.fluid.ModFluids;
 import me.siasur.unrelatedadditions.inventory.ModCreativeModeTab;
 import me.siasur.unrelatedadditions.utils.ModTags;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -73,9 +71,21 @@ public class ModItems {
                     .stacksTo(1)
             ));
 
-    public static final RegistryObject<AngelBlockItem> ANGEL_BLOCK = ITEMS.register("angel_block", () -> new AngelBlockItem(ModBlocks.ANGEL_BLOCK.get(), new Item.Properties().tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)));
+    public static final RegistryObject<AngelBlockItem> ANGEL_BLOCK = ITEMS.register("angel_block",
+            () -> new AngelBlockItem(ModBlocks.ANGEL_BLOCK.get(), new Item.Properties()
+                    .tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)
+            ));
 
-    public static final RegistryObject<RopeLadderBlockItem> ROPE_LADDER = ITEMS.register("rope_ladder", () -> new RopeLadderBlockItem(ModBlocks.ROPE_LADDER.get(), new Item.Properties().tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)));
+    public static final RegistryObject<RopeLadderBlockItem> ROPE_LADDER = ITEMS.register("rope_ladder",
+            () -> new RopeLadderBlockItem(ModBlocks.ROPE_LADDER.get(), new Item.Properties()
+                    .tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)
+            ));
+
+    public static final RegistryObject<BucketItem> XP_JUICE_BUCKET = ITEMS.register("xp_juice_bucket",
+            () -> new BucketItem(ModFluids.SOURCE_XP_JUICE, new Item.Properties()
+                    .tab(ModCreativeModeTab.TAB_UNRELATEDADDITIONS)
+                    .stacksTo(1)
+            ));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

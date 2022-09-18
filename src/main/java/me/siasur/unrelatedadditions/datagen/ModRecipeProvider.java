@@ -186,6 +186,14 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_sticks", has(Tags.Items.RODS_WOODEN))
                 .save(recipeConsumer);
 
+        ShapedRecipeBuilder.shaped(ModBlocks.XP_DRAIN.get(), 1)
+                .define('#', Blocks.IRON_BARS)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .unlockedBy("has_iron_bars", has(Items.IRON_BARS))
+                .save(recipeConsumer);
+
     }
 
     protected void oakFlagFromWool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, ItemLike wool) {

@@ -2,6 +2,8 @@ package me.siasur.unrelatedadditions;
 
 import com.mojang.logging.LogUtils;
 import me.siasur.unrelatedadditions.block.ModBlocks;
+import me.siasur.unrelatedadditions.fluid.ModFluidTypes;
+import me.siasur.unrelatedadditions.fluid.ModFluids;
 import me.siasur.unrelatedadditions.item.ModItems;
 import me.siasur.unrelatedadditions.utils.BlockHitSideDetection;
 import net.minecraftforge.common.MinecraftForge;
@@ -27,6 +29,9 @@ public class UnrelatedAdditions
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        ModFluidTypes.register(modEventBus);
+        ModFluids.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
