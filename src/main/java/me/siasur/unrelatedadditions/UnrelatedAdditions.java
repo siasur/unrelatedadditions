@@ -2,6 +2,7 @@ package me.siasur.unrelatedadditions;
 
 import com.mojang.logging.LogUtils;
 import me.siasur.unrelatedadditions.block.ModBlocks;
+import me.siasur.unrelatedadditions.block.entity.ModBlockEntities;
 import me.siasur.unrelatedadditions.fluid.ModFluidTypes;
 import me.siasur.unrelatedadditions.fluid.ModFluids;
 import me.siasur.unrelatedadditions.item.ModItems;
@@ -32,6 +33,8 @@ public class UnrelatedAdditions
 
         ModFluidTypes.register(modEventBus);
         ModFluids.register(modEventBus);
+
+        ModBlockEntities.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
