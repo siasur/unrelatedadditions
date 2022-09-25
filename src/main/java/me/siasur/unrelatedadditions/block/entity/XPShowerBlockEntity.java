@@ -13,6 +13,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
 public class XPShowerBlockEntity extends BlockEntity {
@@ -64,7 +65,7 @@ public class XPShowerBlockEntity extends BlockEntity {
 
         if (entity == null) return null;
 
-        return entity.getCapability(ForgeCapabilities.FLUID_HANDLER, blockState.getValue(XPShowerBlock.FACING).getOpposite()).resolve().orElseGet(() -> null);
+        return entity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, blockState.getValue(XPShowerBlock.FACING).getOpposite()).resolve().orElseGet(() -> null);
     }
 
     private static Vec3 getOrbSpawnLocation(BlockPos blockPos) {
