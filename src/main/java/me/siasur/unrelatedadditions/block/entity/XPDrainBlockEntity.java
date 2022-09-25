@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
 public class XPDrainBlockEntity extends BlockEntity {
@@ -77,7 +78,8 @@ public class XPDrainBlockEntity extends BlockEntity {
 
         if (entity == null) return null;
 
-        return entity.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP).resolve().orElseGet(() -> null);
+        return entity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, Direction.UP).resolve().orElseGet(() -> null);
+
     }
 
     private static int scaleConversion(int ration, int totalExperience, int time) {
