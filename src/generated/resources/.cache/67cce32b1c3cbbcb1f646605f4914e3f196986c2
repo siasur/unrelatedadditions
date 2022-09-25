@@ -1,4 +1,4 @@
-// 1.19	2022-09-11T18:45:11.4749026	LootTables
+// 1.19.2	2022-09-25T00:35:41.8738004	LootTables
 1d4929d7d6176f60e5ea991a577527ed251ef375 data/unrelatedadditions/loot_tables/blocks/angel_block.json
 bf11cca0f0e3ffdb3c76ef4995c6fb6d4aacff76 data/unrelatedadditions/loot_tables/blocks/black_oak_flag.json
 ee3d1716632963221c94b4842c8c4663b9041f6a data/unrelatedadditions/loot_tables/blocks/blue_oak_flag.json
@@ -42,4 +42,7 @@ a0e67201b463c7e2c89e83d1f4c8aec2a05ddded data/unrelatedadditions/loot_tables/blo
 10657144a15e0878974e843a8aad44a2365ed497 data/unrelatedadditions/loot_tables/blocks/triple_compressed_red_sand.json
 240a957d5feda4f440c9255ac966d340d313d0ca data/unrelatedadditions/loot_tables/blocks/triple_compressed_sand.json
 0f43c699d6f8906f6786e9d2288e5987f5299640 data/unrelatedadditions/loot_tables/blocks/white_oak_flag.json
+07a8ff66d9764a0270bc8a63fa1ad7f5f62d3bbb data/unrelatedadditions/loot_tables/blocks/xp_drain.json
+1d4929d7d6176f60e5ea991a577527ed251ef375 data/unrelatedadditions/loot_tables/blocks/xp_juice.json
+6592c7064ddf44be3e7c91ec233e86107b1c21e5 data/unrelatedadditions/loot_tables/blocks/xp_shower.json
 1c437a59a2d4cf746e7a9fca59bd97d72e0f05b0 data/unrelatedadditions/loot_tables/blocks/yellow_oak_flag.json

@@ -18,6 +18,8 @@
 
   "item.unrelatedadditions.magnet": "Magnet",
 
+  "item.unrelatedadditions.xp_juice_bucket": "XP Juice Bucket",
+
   "block.unrelatedadditions.compressed_andesite": "Compressed Andesite",
   "block.unrelatedadditions.compressed_cobbled_deepslate": "Compressed Cobbled Deepslate",
   "block.unrelatedadditions.compressed_cobblestone": "Compressed Cobblestone",
@@ -65,6 +67,11 @@
   "block.unrelatedadditions.angel_block": "Angel Block",
 
   "block.unrelatedadditions.rope_ladder": "Rope Ladder",
+
+  "block.unrelatedadditions.xp_drain": "XP Drain",
+  "block.unrelatedadditions.xp_shower": "XP Shower",
+  "fluid_type.unrelatedadditions.xp_juice": "XP Juice",
+  "block.unrelatedadditions.xp_juice": "XP Juice",
 
   "itemGroup.unrelatedadditions": "Unrelated Additions",
 

@@ -1,4 +1,4 @@
-// 1.19	2022-09-11T18:45:11.4799075	Block States: unrelatedadditions
+// 1.19.2	2022-09-25T00:35:41.8702975	Block States: unrelatedadditions
 527e7e71b5b51152cf01f2d8e23346f467522542 assets/unrelatedadditions/blockstates/angel_block.json
 92c569673b04192cb47631cc3eb1808122cd3b9b assets/unrelatedadditions/blockstates/black_oak_flag.json
 0d28bc0649b9338b16546c37eae6739f85ba7702 assets/unrelatedadditions/blockstates/blue_oak_flag.json
@@ -42,6 +42,8 @@ c88ef801956b43560ffff0a30398c6c52ef4d72c assets/unrelatedadditions/blockstates/t
 daa88ee84f32fc30ef702c2bfca8dbc7aaa494c8 assets/unrelatedadditions/blockstates/triple_compressed_red_sand.json
 ebc6adb2ce953927418737d9114b6ab7cdb0bb2c assets/unrelatedadditions/blockstates/triple_compressed_sand.json
 96123b48626044fc6c94ed971202a785a5c85c72 assets/unrelatedadditions/blockstates/white_oak_flag.json
+9f9c9df0296a4d03abbb39bed9d0ad371bc59c6a assets/unrelatedadditions/blockstates/xp_drain.json
+10a6d0bba3322ae20febeec0a7d6d67d8209d4c2 assets/unrelatedadditions/blockstates/xp_shower.json
 a49422e7a95125aa5daff2a568759a2518cffa07 assets/unrelatedadditions/blockstates/yellow_oak_flag.json
 0e868fcbf5d6ca9f7296cd3f528b8e8a2e8560d9 assets/unrelatedadditions/models/block/angel_block.json
 5bb0892613b6f92cc6b35811e8b576d013356976 assets/unrelatedadditions/models/block/angel_block_horizontal.json

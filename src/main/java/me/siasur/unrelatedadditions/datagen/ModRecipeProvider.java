@@ -1,15 +1,10 @@
 package me.siasur.unrelatedadditions.datagen;
 
 import me.siasur.unrelatedadditions.UnrelatedAdditions;
-import me.siasur.unrelatedadditions.block.FlagPoleBlock;
 import me.siasur.unrelatedadditions.block.ModBlocks;
 import me.siasur.unrelatedadditions.item.ExcavatorTool;
 import me.siasur.unrelatedadditions.item.ModItems;
 import me.siasur.unrelatedadditions.utils.ModTags;
-import mekanism.api.MekanismAPI;
-import mekanism.api.chemical.pigment.Pigment;
-import mekanism.api.datagen.recipe.builder.ItemStackChemicalToItemStackRecipeBuilder;
-import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -20,14 +15,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.ICondition;
-import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.crafting.conditions.NotCondition;
 import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
 import net.minecraftforge.registries.RegistryObject;
@@ -193,33 +186,22 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_sticks", has(Tags.Items.RODS_WOODEN))
                 .save(recipeConsumer);
 
-        mekanismOakFlagPainting(recipeConsumer, "white", ModBlocks.WHITE_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "orange", ModBlocks.ORANGE_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "magenta", ModBlocks.MAGENTA_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "light_blue", ModBlocks.LIGHT_BLUE_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "yellow", ModBlocks.YELLOW_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "lime", ModBlocks.LIME_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "pink", ModBlocks.PINK_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "gray", ModBlocks.GRAY_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "light_gray", ModBlocks.LIGHT_GRAY_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "cyan", ModBlocks.CYAN_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "purple", ModBlocks.PURPLE_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "blue", ModBlocks.BLUE_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "brown", ModBlocks.BROWN_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "green", ModBlocks.GREEN_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "red", ModBlocks.RED_OAK_FLAG);
-        mekanismOakFlagPainting(recipeConsumer, "black", ModBlocks.BLACK_OAK_FLAG);
+        ShapedRecipeBuilder.shaped(ModBlocks.XP_DRAIN.get(), 1)
+                .define('#', Blocks.IRON_BARS)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .unlockedBy("has_iron_bars", has(Items.IRON_BARS))
+                .save(recipeConsumer);
 
-    }
+        ShapedRecipeBuilder.shaped(ModBlocks.XP_SHOWER.get(), 1)
+                .define('I', Tags.Items.INGOTS_IRON)
+                .define('O', Items.OBSIDIAN)
+                .pattern("III")
+                .pattern("  O")
+                .unlockedBy("has_iron_ingots", has(Tags.Items.INGOTS_IRON))
+                .save(recipeConsumer);
 
-    private static void mekanismOakFlagPainting(Consumer<FinishedRecipe> recipeConsumer, String colorName, RegistryObject<FlagPoleBlock> output) {
-        ItemStackChemicalToItemStackRecipeBuilder.painting(
-                IngredientCreatorAccess.item().from(ModTags.Items.OAK_FLAGS),
-                IngredientCreatorAccess.pigment().from(Pigment.getFromRegistry(new ResourceLocation(MekanismAPI.MEKANISM_MODID, colorName)), 256),
-                new ItemStack(output.get())
-        )
-                .addCondition(new ModLoadedCondition(MekanismAPI.MEKANISM_MODID))
-                .build(recipeConsumer, new ResourceLocation(UnrelatedAdditions.MODID, String.format("%s_from_mekanism_painting", output.getId().getPath())));
     }
 
     protected void oakFlagFromWool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, ItemLike wool) {

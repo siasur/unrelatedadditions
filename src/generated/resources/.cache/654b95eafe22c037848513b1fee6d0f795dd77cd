@@ -1,4 +1,4 @@
-// 1.19	2022-09-11T18:45:11.4718993	Item Models: unrelatedadditions
+// 1.19.2	2022-09-25T12:07:40.2319014	Item Models: unrelatedadditions
 185dc5487b308a1ea071cc9c32776c5cb257077a assets/unrelatedadditions/models/item/angel_block.json
 210c468bafb8312a69f0ef3058e1302ac99d061d assets/unrelatedadditions/models/item/black_oak_flag.json
 78ce65b82f33e68040e110d05a73bc8a2daf01b3 assets/unrelatedadditions/models/item/blue_oak_flag.json
@@ -57,4 +57,7 @@ f8417281f7f5e7903c6927e08247f2d503c2ae9a assets/unrelatedadditions/models/item/t
 402ac0ce3f3978e1529ad696f342d36e5847d83b assets/unrelatedadditions/models/item/white_oak_flag.json
 73cb2736209481e38e2ce890223d5d8076d2ddf1 assets/unrelatedadditions/models/item/wooden_hammer.json
 1ef7cc781f1dfd7a2a81d1bd3bb94ef47e5ff86c assets/unrelatedadditions/models/item/wooden_spade.json
+310ae9489aa0b8318f981e95bbe029fa93dccd2a assets/unrelatedadditions/models/item/xp_drain.json
+8d14ce5f5474a9f42c889627100fdaa2f43454f8 assets/unrelatedadditions/models/item/xp_juice_bucket.json
+3cb44aab450fba68e521216aa107d882c2abfeb2 assets/unrelatedadditions/models/item/xp_shower.json
 7be4cd963ebd7d81553172be4fae021aa2e25179 assets/unrelatedadditions/models/item/yellow_oak_flag.json

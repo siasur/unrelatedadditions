@@ -1,6 +1,7 @@
 package me.siasur.unrelatedadditions.block;
 
 import me.siasur.unrelatedadditions.UnrelatedAdditions;
+import me.siasur.unrelatedadditions.fluid.ModFluids;
 import me.siasur.unrelatedadditions.inventory.ModCreativeModeTab;
 import me.siasur.unrelatedadditions.item.ModItems;
 import net.minecraft.network.chat.Component;
@@ -8,6 +9,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -24,6 +26,7 @@ import java.util.function.Supplier;
 public class ModBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, UnrelatedAdditions.MODID);
+
     private static final String COMPRESSION_TOOLTIP_KEY = "tooltip.unrelatedadditions.compressedblock";
 
     public static RegistryObject<Block> COMPRESSED_COBBLESTONE = registerBlock("compressed_cobblestone", ()-> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS, getCompressionTooltip(9));
@@ -73,6 +76,10 @@ public class ModBlocks {
     public static RegistryObject<FlagPoleBlock> BLACK_OAK_FLAG      = registerBlock("black_oak_flag", () -> new FlagPoleBlock(BlockBehaviour.Properties.of(Material.WOOD)       .lightLevel((state) -> state.getValue(BlockStateProperties.LIT) ? 4 : 0).noOcclusion().strength(.75f).sound(SoundType.WOOD)), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
 
     public static RegistryObject<RopeLadderBlock> ROPE_LADDER = BLOCKS.register("rope_ladder", () -> new RopeLadderBlock(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.4F).sound(SoundType.LADDER).noOcclusion()));
+
+    public static RegistryObject<XPDrainBlock> XP_DRAIN = registerBlock("xp_drain", () -> new XPDrainBlock(BlockBehaviour.Properties.of(Material.METAL).strength(0.8f).noOcclusion()), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<XPShowerBlock> XP_SHOWER = registerBlock("xp_shower", () -> new XPShowerBlock(BlockBehaviour.Properties.of(Material.METAL).strength(0.8f).noOcclusion()), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<LiquidBlock> XP_JUICE = BLOCKS.register("xp_juice", () -> new LiquidBlock(ModFluids.SOURCE_XP_JUICE, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockSupplier, CreativeModeTab tab) {

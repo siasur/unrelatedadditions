@@ -70,6 +70,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .renderType(mcLoc("cutout"))
         );
 
+        simpleBlock(ModBlocks.XP_DRAIN.get(), models().getExistingFile(modLoc("block/xp_drain")));
+        horizontalBlock(ModBlocks.XP_SHOWER.get(), models().getExistingFile(modLoc("block/xp_shower")));
+
     }
 
     protected void flagPoleBlock(FlagPoleBlock block, ResourceLocation poleTexture, ResourceLocation flagTexture) {
