@@ -14,6 +14,8 @@ public class ModBlockEntities {
 
     public static final RegistryObject<BlockEntityType<XPDrainBlockEntity>> XP_DRAIN = BLOCK_ENTITIES.register("xp_drain",
             () -> BlockEntityType.Builder.of(XPDrainBlockEntity::new, ModBlocks.XP_DRAIN.get()).build(null));
+    public static final RegistryObject<BlockEntityType<XPShowerBlockEntity>> XP_SHOWER = BLOCK_ENTITIES.register("xp_shower",
+            () -> BlockEntityType.Builder.of(XPShowerBlockEntity::new, ModBlocks.XP_SHOWER.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

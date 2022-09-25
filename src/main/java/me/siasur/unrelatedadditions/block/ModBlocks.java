@@ -78,6 +78,7 @@ public class ModBlocks {
     public static RegistryObject<RopeLadderBlock> ROPE_LADDER = BLOCKS.register("rope_ladder", () -> new RopeLadderBlock(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.4F).sound(SoundType.LADDER).noOcclusion()));
 
     public static RegistryObject<XPDrainBlock> XP_DRAIN = registerBlock("xp_drain", () -> new XPDrainBlock(BlockBehaviour.Properties.of(Material.METAL).strength(0.8f).noOcclusion()), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
+    public static RegistryObject<XPShowerBlock> XP_SHOWER = registerBlock("xp_shower", () -> new XPShowerBlock(BlockBehaviour.Properties.of(Material.METAL).strength(0.8f).noOcclusion()), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
     public static RegistryObject<LiquidBlock> XP_JUICE = BLOCKS.register("xp_juice", () -> new LiquidBlock(ModFluids.SOURCE_XP_JUICE, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
 

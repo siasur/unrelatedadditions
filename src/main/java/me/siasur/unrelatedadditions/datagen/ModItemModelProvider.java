@@ -43,10 +43,13 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.MAGNET.get());
 
-        var ropeLadderLoc = ModItems.ROPE_LADDER.getId();
         getBuilder(ModItems.ROPE_LADDER.get().toString())
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", new ResourceLocation(ropeLadderLoc.getNamespace(), "block/rope_ladder"));
+                .texture("layer0", modLoc("block/rope_ladder"));
+
+        getBuilder(ModItems.XP_JUICE_BUCKET.get().toString())
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", modLoc("item/xp_juice_bucket"));
     }
 
     private void registerAllBlockItemModels() {
@@ -69,15 +72,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         return withExistingParent(item.toString(), new ResourceLocation(item.getNamespace(), "block/" + item.getPath()));
     }
 
-    protected ItemModelBuilder handheldItem(ResourceLocation item)
-    {
+    protected ItemModelBuilder handheldItem(ResourceLocation item) {
         return getBuilder(item.toString())
                 .parent(new ModelFile.UncheckedModelFile("item/handheld"))
                 .texture("layer0", new ResourceLocation(item.getNamespace(), "item/" + item.getPath()));
     }
 
-    protected ItemModelBuilder simpleItem(ResourceLocation item)
-    {
+    protected ItemModelBuilder simpleItem(ResourceLocation item) {
         return getBuilder(item.toString())
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", new ResourceLocation(item.getNamespace(), "item/" + item.getPath()));
