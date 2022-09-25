@@ -150,10 +150,10 @@ dependencies {
 
     // Mekanism
 //    compileOnly "mekanism:Mekanism:${mekanism_version}:api"
-//    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
-//    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
-//    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
-//    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")// Mekanism: Tools
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")// Mekanism: Tools
 //
 //    //JEI
 ////    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
