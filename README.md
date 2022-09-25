@@ -38,6 +38,9 @@ Always getting lost in caves? Don't remember your way home? Place these pointy f
 7. **Rope ladder**  
 Looking for an easy way down a ravine or cliff? You can't place normal ladders because you're standing on an overhang, and you don't feel like digging a staircase? Place the rope ladder on the edge and climb down, it doesn't get easier.
 
+8. **Liquid XP Storage**  
+Having too much xp? Build an _XP Drain_ put in on top of a Tank (Tank is not included) and convert your experience points into _XP Juice_. To get it back, stick an _XP Shower_ on the tank's side and let it rain xp down on you.
+
 I'm also open to suggestions, but I won't promise anything.  
 
 _\* Requires a Mod that adds Bronze Ingots to be crafted_
