@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-25T00:35:41.8738004	LootTables
+// 1.19.2	2022-10-03T20:51:12.2108159	LootTables
 1d4929d7d6176f60e5ea991a577527ed251ef375 data/unrelatedadditions/loot_tables/blocks/angel_block.json
 bf11cca0f0e3ffdb3c76ef4995c6fb6d4aacff76 data/unrelatedadditions/loot_tables/blocks/black_oak_flag.json
 ee3d1716632963221c94b4842c8c4663b9041f6a data/unrelatedadditions/loot_tables/blocks/blue_oak_flag.json
@@ -19,6 +19,7 @@ edac0370dc081a462020876b12efeca5368265c2 data/unrelatedadditions/loot_tables/blo
 40aefd832fd7200d15980a12e42039a411958d2b data/unrelatedadditions/loot_tables/blocks/double_compressed_gravel.json
 2aaeef6539dedafcd67f246c97d905ca95e167e3 data/unrelatedadditions/loot_tables/blocks/double_compressed_red_sand.json
 0c1d983745e3bd485b9d73dc685147f5e5cf3c5f data/unrelatedadditions/loot_tables/blocks/double_compressed_sand.json
+d53e5e6de4e802b036edd23514e9707c2b352928 data/unrelatedadditions/loot_tables/blocks/drying_rack.json
 d8bb3cdbb2a5831a1acc0fed6f58f9904a7e9326 data/unrelatedadditions/loot_tables/blocks/gray_oak_flag.json
 9f4384f78e14ad9ed1274a53496842c28d48410f data/unrelatedadditions/loot_tables/blocks/green_oak_flag.json
 e6d17abacdf06f575afa5bcc0b1b39f0e0097361 data/unrelatedadditions/loot_tables/blocks/light_blue_oak_flag.json

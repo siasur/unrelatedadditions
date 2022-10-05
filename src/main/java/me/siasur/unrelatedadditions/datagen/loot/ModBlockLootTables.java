@@ -68,6 +68,8 @@ public class ModBlockLootTables extends BlockLoot {
         this.dropSelf(ModBlocks.XP_DRAIN.get());
         this.dropSelf(ModBlocks.XP_SHOWER.get());
         this.add(ModBlocks.XP_JUICE.get(), noDrop());
+
+        this.dropSelf(ModBlocks.DRYING_RACK.get());
     }
 
     @Override

@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-25T12:07:40.2319014	Item Models: unrelatedadditions
+// 1.19.2	2022-10-03T20:51:12.2098143	Item Models: unrelatedadditions
 185dc5487b308a1ea071cc9c32776c5cb257077a assets/unrelatedadditions/models/item/angel_block.json
 210c468bafb8312a69f0ef3058e1302ac99d061d assets/unrelatedadditions/models/item/black_oak_flag.json
 78ce65b82f33e68040e110d05a73bc8a2daf01b3 assets/unrelatedadditions/models/item/blue_oak_flag.json
@@ -23,6 +23,7 @@ a770e2abd5fd95b832b5114af3388277a5d7e8e6 assets/unrelatedadditions/models/item/d
 6a93bd7ceb0f7106738b7f0eeace00e258ab96e2 assets/unrelatedadditions/models/item/double_compressed_gravel.json
 6991fee80f82fe50351e841e703338da29d172dd assets/unrelatedadditions/models/item/double_compressed_red_sand.json
 06cac47fedd9d342f10e420d00d45700fdb90d01 assets/unrelatedadditions/models/item/double_compressed_sand.json
+a904cd63e551e4a9ce433b49fbfe31c6513c3c59 assets/unrelatedadditions/models/item/drying_rack.json
 2807f9c0a428cab0bf0e78c22c0a0fb6cce3bc22 assets/unrelatedadditions/models/item/golden_hammer.json
 b2abd8a713d3bfc0e5147d6c11ccf5b5174284f0 assets/unrelatedadditions/models/item/golden_spade.json
 0c95d0079374e92f45d36e73498386a644ab621e assets/unrelatedadditions/models/item/gray_oak_flag.json

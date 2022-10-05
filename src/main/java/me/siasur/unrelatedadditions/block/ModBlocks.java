@@ -81,6 +81,7 @@ public class ModBlocks {
     public static RegistryObject<XPShowerBlock> XP_SHOWER = registerBlock("xp_shower", () -> new XPShowerBlock(BlockBehaviour.Properties.of(Material.METAL).strength(0.8f).noOcclusion()), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
     public static RegistryObject<LiquidBlock> XP_JUICE = BLOCKS.register("xp_juice", () -> new LiquidBlock(ModFluids.SOURCE_XP_JUICE, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
+    public static RegistryObject<DryingRackBlock> DRYING_RACK = registerBlock("drying_rack", () -> new DryingRackBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion()), ModCreativeModeTab.TAB_UNRELATEDADDITIONS);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> blockSupplier, CreativeModeTab tab) {
         return registerBlock(name, blockSupplier, tab, null);

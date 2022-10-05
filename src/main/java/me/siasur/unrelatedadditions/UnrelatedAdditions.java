@@ -3,10 +3,13 @@ package me.siasur.unrelatedadditions;
 import com.mojang.logging.LogUtils;
 import me.siasur.unrelatedadditions.block.ModBlocks;
 import me.siasur.unrelatedadditions.block.entity.ModBlockEntities;
+import me.siasur.unrelatedadditions.block.entity.renderer.DryingRackBlockEntityRenderer;
 import me.siasur.unrelatedadditions.fluid.ModFluidTypes;
 import me.siasur.unrelatedadditions.fluid.ModFluids;
 import me.siasur.unrelatedadditions.item.ModItems;
 import me.siasur.unrelatedadditions.utils.BlockHitSideDetection;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -50,13 +53,18 @@ public class UnrelatedAdditions
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(modid = MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModEvents
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
 
+        }
+
+        @SubscribeEvent
+        public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(ModBlockEntities.DRYING_RACK.get(), DryingRackBlockEntityRenderer::new);
         }
     }
 }

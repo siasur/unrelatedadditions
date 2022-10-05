@@ -17,6 +17,9 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<XPShowerBlockEntity>> XP_SHOWER = BLOCK_ENTITIES.register("xp_shower",
             () -> BlockEntityType.Builder.of(XPShowerBlockEntity::new, ModBlocks.XP_SHOWER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<DryingRackBlockEntity>> DRYING_RACK = BLOCK_ENTITIES.register("drying_rack",
+            () -> BlockEntityType.Builder.of(DryingRackBlockEntity::new, ModBlocks.DRYING_RACK.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

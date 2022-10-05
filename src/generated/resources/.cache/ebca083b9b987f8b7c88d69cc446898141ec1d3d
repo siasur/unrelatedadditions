@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-25T00:35:41.8702975	Block States: unrelatedadditions
+// 1.19.2	2022-10-03T20:51:12.2088144	Block States: unrelatedadditions
 527e7e71b5b51152cf01f2d8e23346f467522542 assets/unrelatedadditions/blockstates/angel_block.json
 92c569673b04192cb47631cc3eb1808122cd3b9b assets/unrelatedadditions/blockstates/black_oak_flag.json
 0d28bc0649b9338b16546c37eae6739f85ba7702 assets/unrelatedadditions/blockstates/blue_oak_flag.json
@@ -19,6 +19,7 @@ ee31268f84bb226017f609fd640cb25c697e2cf3 assets/unrelatedadditions/blockstates/d
 0b6a236b3266adfd43ce1396a607cf81f0b45352 assets/unrelatedadditions/blockstates/double_compressed_gravel.json
 a53327ae14d4377c630d17f435c0c4e6cc53e6c3 assets/unrelatedadditions/blockstates/double_compressed_red_sand.json
 258a9ea0b8903513b7111020c392fc8cc5c7290e assets/unrelatedadditions/blockstates/double_compressed_sand.json
+dc0ba72759d66bd945162b1fcf8d9606ba502999 assets/unrelatedadditions/blockstates/drying_rack.json
 cf66b8406c6c2d5433d0ff2d388cd9e20f12ee43 assets/unrelatedadditions/blockstates/gray_oak_flag.json
 089fb9b4166768c146bdb0cd6266a302c3537197 assets/unrelatedadditions/blockstates/green_oak_flag.json
 87f68de5d5ec7e10beafb38898379f76f936f129 assets/unrelatedadditions/blockstates/light_blue_oak_flag.json

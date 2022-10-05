@@ -202,6 +202,12 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_iron_ingots", has(Tags.Items.INGOTS_IRON))
                 .save(recipeConsumer);
 
+        ShapedRecipeBuilder.shaped(ModBlocks.DRYING_RACK.get(), 2)
+                .define('S', Blocks.OAK_SLAB)
+                .pattern("SSS")
+                .unlockedBy("has_oak_slab", has(Blocks.OAK_SLAB))
+                .save(recipeConsumer);
+
     }
 
     protected void oakFlagFromWool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, ItemLike wool) {
