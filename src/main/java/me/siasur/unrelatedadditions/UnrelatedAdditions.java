@@ -7,7 +7,10 @@ import me.siasur.unrelatedadditions.block.entity.renderer.DryingRackBlockEntityR
 import me.siasur.unrelatedadditions.fluid.ModFluidTypes;
 import me.siasur.unrelatedadditions.fluid.ModFluids;
 import me.siasur.unrelatedadditions.item.ModItems;
+import me.siasur.unrelatedadditions.recipe.ModRecipeSerializers;
+import me.siasur.unrelatedadditions.recipe.ModRecipeTypes;
 import me.siasur.unrelatedadditions.utils.BlockHitSideDetection;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -39,6 +42,9 @@ public class UnrelatedAdditions
 
         ModBlockEntities.register(modEventBus);
 
+        ModRecipeTypes.register(modEventBus);
+        ModRecipeSerializers.register(modEventBus);
+
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -66,5 +72,10 @@ public class UnrelatedAdditions
         public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
             event.registerBlockEntityRenderer(ModBlockEntities.DRYING_RACK.get(), DryingRackBlockEntityRenderer::new);
         }
+    }
+
+
+    public static ResourceLocation modLoc(String path) {
+        return new ResourceLocation(UnrelatedAdditions.MODID, path);
     }
 }

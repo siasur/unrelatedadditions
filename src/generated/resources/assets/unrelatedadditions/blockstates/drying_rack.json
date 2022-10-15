@@ -1,32 +1,17 @@
 {
   "variants": {
-    "facing=east,waterlogged=false": {
+    "facing=east": {
       "model": "unrelatedadditions:block/drying_rack",
       "y": 90
     },
-    "facing=east,waterlogged=true": {
-      "model": "unrelatedadditions:block/drying_rack",
-      "y": 90
-    },
-    "facing=north,waterlogged=false": {
+    "facing=north": {
       "model": "unrelatedadditions:block/drying_rack"
     },
-    "facing=north,waterlogged=true": {
-      "model": "unrelatedadditions:block/drying_rack"
-    },
-    "facing=south,waterlogged=false": {
+    "facing=south": {
       "model": "unrelatedadditions:block/drying_rack",
       "y": 180
     },
-    "facing=south,waterlogged=true": {
-      "model": "unrelatedadditions:block/drying_rack",
-      "y": 180
-    },
-    "facing=west,waterlogged=false": {
-      "model": "unrelatedadditions:block/drying_rack",
-      "y": 270
-    },
-    "facing=west,waterlogged=true": {
+    "facing=west": {
       "model": "unrelatedadditions:block/drying_rack",
       "y": 270
     }

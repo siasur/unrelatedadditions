@@ -1,10 +1,12 @@
 package me.siasur.unrelatedadditions.block.entity;
 
+import me.siasur.unrelatedadditions.recipe.DryingRecipe;
+import me.siasur.unrelatedadditions.recipe.ModRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -17,11 +19,15 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
+
 import static net.minecraft.world.Containers.dropItemStack;
 
 public class DryingRackBlockEntity extends BlockEntity {
 
-    private static final String NBT_INVENTORY_KEY = "inventory";
+    private static final String NBT_KEY_INVENTORY = "inventory";
+    private static final String NBT_KEY_PROGRESS = "progress";
+    private static final String NBT_KEY_MAX_PROGRESS = "max_progress";
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(1) {
         @Override
@@ -58,7 +64,7 @@ public class DryingRackBlockEntity extends BlockEntity {
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
-        pTag.put(NBT_INVENTORY_KEY, itemHandler.serializeNBT());
+        pTag.put(NBT_KEY_INVENTORY, itemHandler.serializeNBT());
 
         super.saveAdditional(pTag);
     }
@@ -67,7 +73,7 @@ public class DryingRackBlockEntity extends BlockEntity {
     public void load(CompoundTag pTag) {
         super.load(pTag);
 
-        itemHandler.deserializeNBT(pTag.getCompound(NBT_INVENTORY_KEY));
+        itemHandler.deserializeNBT(pTag.getCompound(NBT_KEY_INVENTORY));
     }
 
     public void dropContent(Level pLevel, BlockPos pPos) {
@@ -79,8 +85,29 @@ public class DryingRackBlockEntity extends BlockEntity {
         markUpdated();
     }
 
-    public static void tick(Level level, BlockPos blockPos, BlockState blockState, DryingRackBlockEntity e) {
+    public static void tick(Level level, BlockPos blockPos, BlockState blockState, DryingRackBlockEntity dryingRack) {
+        SimpleContainer dryingRackContainer = dryingRack.getSimpleContainer();
+        Optional<DryingRecipe> maybeRecipe = getRecipe(dryingRackContainer, level);
 
+        // TODO: Properly handle recipe
+//        if (maybeRecipe.isPresent()) {
+//            DryingRecipe recipe = maybeRecipe.get();
+//
+//            dropItemStack(level, (double) blockPos.getX(), (double) blockPos.getY(), (double) blockPos.getZ(), recipe.assemble(dryingRackContainer));
+//            dryingRack.itemHandler.setStackInSlot(0, ItemStack.EMPTY);
+//            dryingRack.markUpdated();
+//        }
+    }
+
+    private static Optional<DryingRecipe> getRecipe(SimpleContainer dryingRackContainer, Level level) {
+        return level.getRecipeManager().getRecipeFor(ModRecipeTypes.DRYING.get(), dryingRackContainer, level);
+    }
+
+    private SimpleContainer getSimpleContainer() {
+        SimpleContainer container = new SimpleContainer(1);
+        container.setItem(0, itemHandler.getStackInSlot(0));
+
+        return container;
     }
 
     public boolean putItem(ItemStack itemStack) {

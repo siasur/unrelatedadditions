@@ -37,7 +37,7 @@ public class DryingRackBlockEntityRenderer implements BlockEntityRenderer<Drying
                 pPoseStack.mulPose(Vector3f.YP.rotationDegrees(0));
             }
             case SOUTH -> {
-                pPoseStack.translate(0.525f, 0.5f, 1-0.06f);
+                pPoseStack.translate(0.525f, 0.5f, 1 - 0.06f);
                 pPoseStack.mulPose(Vector3f.YP.rotationDegrees(180));
             }
             case WEST -> {
@@ -45,7 +45,7 @@ public class DryingRackBlockEntityRenderer implements BlockEntityRenderer<Drying
                 pPoseStack.mulPose(Vector3f.YP.rotationDegrees(90));
             }
             case EAST -> {
-                pPoseStack.translate(1-0.06f, 0.5f, 0.5f);
+                pPoseStack.translate(1 - 0.06f, 0.5f, 0.5f);
                 pPoseStack.mulPose(Vector3f.YP.rotationDegrees(270));
             }
         }

@@ -30,7 +30,6 @@ public class DryingRackBlock extends BaseEntityBlock {
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-
     private static final VoxelShape SHAPE_WEST = Block.box(0, 14, 0, 2, 16, 16);
     private static final VoxelShape SHAPE_EAST = Block.box(14, 14, 0, 16, 16, 16);
     private static final VoxelShape SHAPE_NORTH = Block.box(0, 14, 0, 16, 16, 2);
