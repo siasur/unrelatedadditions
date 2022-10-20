@@ -27,7 +27,6 @@ public class DryingRackBlockEntity extends BlockEntity {
 
     private static final String NBT_KEY_INVENTORY = "inventory";
     private static final String NBT_KEY_PROGRESS = "progress";
-    private static final String NBT_KEY_MAX_PROGRESS = "max_progress";
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(1) {
         @Override
@@ -35,6 +34,8 @@ public class DryingRackBlockEntity extends BlockEntity {
             return 1;
         }
     };
+
+    private int dryingProgress = 0;
 
     public DryingRackBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.DRYING_RACK.get(), pPos, pBlockState);
@@ -53,7 +54,6 @@ public class DryingRackBlockEntity extends BlockEntity {
     @Override
     public void onLoad() {
         super.onLoad();
-        lazyItemStackHandler = LazyOptional.of(() -> itemHandler);
     }
 
     @Override
@@ -63,8 +63,15 @@ public class DryingRackBlockEntity extends BlockEntity {
     }
 
     @Override
+    public void reviveCaps() {
+        super.reviveCaps();
+        lazyItemStackHandler = LazyOptional.of(() -> itemHandler);
+    }
+
+    @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put(NBT_KEY_INVENTORY, itemHandler.serializeNBT());
+        pTag.putInt(NBT_KEY_PROGRESS, dryingProgress);
 
         super.saveAdditional(pTag);
     }
@@ -74,6 +81,7 @@ public class DryingRackBlockEntity extends BlockEntity {
         super.load(pTag);
 
         itemHandler.deserializeNBT(pTag.getCompound(NBT_KEY_INVENTORY));
+        dryingProgress = pTag.getInt(NBT_KEY_PROGRESS);
     }
 
     public void dropContent(Level pLevel, BlockPos pPos) {
@@ -86,17 +94,27 @@ public class DryingRackBlockEntity extends BlockEntity {
     }
 
     public static void tick(Level level, BlockPos blockPos, BlockState blockState, DryingRackBlockEntity dryingRack) {
-        SimpleContainer dryingRackContainer = dryingRack.getSimpleContainer();
-        Optional<DryingRecipe> maybeRecipe = getRecipe(dryingRackContainer, level);
 
-        // TODO: Properly handle recipe
-//        if (maybeRecipe.isPresent()) {
-//            DryingRecipe recipe = maybeRecipe.get();
-//
-//            dropItemStack(level, (double) blockPos.getX(), (double) blockPos.getY(), (double) blockPos.getZ(), recipe.assemble(dryingRackContainer));
-//            dryingRack.itemHandler.setStackInSlot(0, ItemStack.EMPTY);
-//            dryingRack.markUpdated();
-//        }
+        ItemStack itemInSlot = dryingRack.itemHandler.getStackInSlot(0);
+        boolean hasItem = !itemInSlot.isEmpty();
+
+        if (hasItem)
+        {
+            SimpleContainer dryingRackContainer = dryingRack.getSimpleContainer();
+            Optional<DryingRecipe> maybeRecipe = getRecipe(dryingRackContainer, level);
+
+            if (maybeRecipe.isPresent()) {
+                DryingRecipe recipe = maybeRecipe.get();
+
+                if (dryingRack.dryingProgress++ >= recipe.getDryingTime()){
+                    dryingRack.itemHandler.setStackInSlot(0, recipe.assemble(dryingRackContainer));
+                    dryingRack.markUpdated();
+                    dryingRack.dryingProgress = 0;
+                }
+            } else {
+                dryingRack.dryingProgress = 0;
+            }
+        }
     }
 
     private static Optional<DryingRecipe> getRecipe(SimpleContainer dryingRackContainer, Level level) {

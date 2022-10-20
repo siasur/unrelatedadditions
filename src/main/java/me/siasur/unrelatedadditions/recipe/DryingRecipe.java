@@ -50,6 +50,10 @@ public class DryingRecipe implements Recipe<SimpleContainer> {
         return result;
     }
 
+    public int getDryingTime() {
+        return this.dryingTime;
+    }
+
     @Override
     public ResourceLocation getId() {
         return id;
@@ -63,6 +67,11 @@ public class DryingRecipe implements Recipe<SimpleContainer> {
     @Override
     public RecipeType<?> getType() {
         return ModRecipeTypes.DRYING.get();
+    }
+
+    @Override
+    public boolean isSpecial() {
+        return true;
     }
 
     public static class Serializer implements RecipeSerializer<DryingRecipe> {
