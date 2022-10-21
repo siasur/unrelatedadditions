@@ -2,6 +2,7 @@ package me.siasur.unrelatedadditions.datagen;
 
 import me.siasur.unrelatedadditions.UnrelatedAdditions;
 import me.siasur.unrelatedadditions.block.ModBlocks;
+import me.siasur.unrelatedadditions.datagen.builder.recipe.DryingRecipeBuilder;
 import me.siasur.unrelatedadditions.item.ExcavatorTool;
 import me.siasur.unrelatedadditions.item.ModItems;
 import me.siasur.unrelatedadditions.utils.ModTags;
@@ -54,7 +55,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(ModItems.TINY_CHARCOAL.get(), 8)
                 .unlockedBy(getHasName(ModItems.TINY_CHARCOAL.get()), has(ModItems.TINY_CHARCOAL.get()))
                 .save(recipeConsumer, new ResourceLocation(UnrelatedAdditions.MODID, getConversionRecipeName(Items.CHARCOAL, ModItems.TINY_CHARCOAL.get())));
-        
+
         compressedBlocks(recipeConsumer
                 , Blocks.COBBLESTONE
                 , ModBlocks.COMPRESSED_COBBLESTONE.get()
@@ -208,6 +209,30 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_oak_slab", has(Blocks.OAK_SLAB))
                 .save(recipeConsumer);
 
+        dryingRecipe(recipeConsumer, Items.DEAD_BRAIN_CORAL, Items.BRAIN_CORAL, 50);
+        dryingRecipe(recipeConsumer, Items.DEAD_BUBBLE_CORAL, Items.BUBBLE_CORAL, 50);
+        dryingRecipe(recipeConsumer, Items.DEAD_FIRE_CORAL, Items.FIRE_CORAL, 50);
+        dryingRecipe(recipeConsumer, Items.DEAD_HORN_CORAL, Items.HORN_CORAL, 50);
+        dryingRecipe(recipeConsumer, Items.DEAD_TUBE_CORAL, Items.TUBE_CORAL, 50);
+        dryingRecipe(recipeConsumer, Items.DEAD_BRAIN_CORAL_FAN, Items.BRAIN_CORAL_FAN, 50);
+        dryingRecipe(recipeConsumer, Items.DEAD_BUBBLE_CORAL_FAN, Items.BUBBLE_CORAL_FAN, 50);
+        dryingRecipe(recipeConsumer, Items.DEAD_FIRE_CORAL_FAN, Items.FIRE_CORAL_FAN, 50);
+        dryingRecipe(recipeConsumer, Items.DEAD_HORN_CORAL_FAN, Items.HORN_CORAL_FAN, 50);
+        dryingRecipe(recipeConsumer, Items.DEAD_TUBE_CORAL_FAN, Items.TUBE_CORAL_FAN, 50);
+        dryingRecipe(recipeConsumer, Items.SPONGE, Items.WET_SPONGE, 40 * 20);
+        dryingRecipe(recipeConsumer, Items.SLIME_BALL, Items.HONEY_BOTTLE, 16 * 20);
+        dryingRecipe(recipeConsumer, Items.LEATHER, Items.ROTTEN_FLESH, 200, getConversionByDryingRecipeName(Items.LEATHER, Items.ROTTEN_FLESH));
+        dryingRecipe(recipeConsumer, Items.LEATHER, Items.COOKED_BEEF, 200, getConversionByDryingRecipeName(Items.LEATHER, Items.COOKED_BEEF));
+        dryingRecipe(recipeConsumer, Items.LEATHER, Items.COOKED_PORKCHOP, 200, getConversionByDryingRecipeName(Items.LEATHER, Items.COOKED_PORKCHOP));
+        dryingRecipe(recipeConsumer, Items.LEATHER, Items.COOKED_MUTTON, 200, getConversionByDryingRecipeName(Items.LEATHER, Items.COOKED_MUTTON));
+    }
+
+    protected void dryingRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike result, ItemLike input, int dryingTime) {
+        dryingRecipe(recipeConsumer, result, input, dryingTime, null);
+    }
+
+    protected void dryingRecipe(Consumer<FinishedRecipe> recipeConsumer, ItemLike result, ItemLike input, int dryingTime, @Nullable String recipeName) {
+        DryingRecipeBuilder.drying(result, dryingTime).from(input).save(recipeConsumer, recipeName != null ? recipeName : getDryingRecipeName(result));
     }
 
     protected void oakFlagFromWool(Consumer<FinishedRecipe> recipeConsumer, ItemLike output, ItemLike wool) {
@@ -337,5 +362,13 @@ public class ModRecipeProvider extends RecipeProvider {
 
     protected ResourceLocation getConversionRecipeModLoc(ItemLike result, ItemLike source) {
         return new ResourceLocation(UnrelatedAdditions.MODID, getConversionRecipeName(result, source));
+    }
+
+    protected static String getConversionByDryingRecipeName(ItemLike pResult, ItemLike pIngredient) {
+        return getItemName(pResult) + "_from_drying_" + getItemName(pIngredient);
+    }
+
+    private String getDryingRecipeName(ItemLike pItemLike) {
+        return getItemName(pItemLike) + "_from_drying";
     }
 }

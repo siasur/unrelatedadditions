@@ -1,0 +1,8 @@
+{
+  "type": "unrelatedadditions:drying",
+  "dryingtime": 320,
+  "ingredient": {
+    "item": "minecraft:honey_bottle"
+  },
+  "result": "minecraft:slime_ball"
+}

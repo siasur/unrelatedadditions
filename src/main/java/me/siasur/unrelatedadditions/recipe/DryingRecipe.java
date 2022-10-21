@@ -1,6 +1,7 @@
 package me.siasur.unrelatedadditions.recipe;
 
 import com.google.gson.JsonObject;
+import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -17,6 +18,7 @@ public class DryingRecipe implements Recipe<SimpleContainer> {
     public static final String JSON_KEY_RESULT = "result";
     public static final String JSON_KEY_INGREDIENT = "ingredient";
     public static final String JSON_KEY_DURATION = "dryingtime";
+    public static final int DEFAULT_DRYINGTIME = 600;
 
     private final ResourceLocation id;
     private final ItemStack result;
@@ -79,9 +81,18 @@ public class DryingRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public DryingRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
-            ItemStack out = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, JSON_KEY_RESULT));
+            ItemStack out;
+            if (pSerializedRecipe.get(JSON_KEY_RESULT).isJsonObject()) {
+                out = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, JSON_KEY_RESULT));
+            } else {
+                String resultName = GsonHelper.getAsString(pSerializedRecipe, JSON_KEY_RESULT);
+                ResourceLocation resourcelocation = new ResourceLocation(resultName);
+                out = new ItemStack(Registry.ITEM.getOptional(resourcelocation)
+                        .orElseThrow(() -> new IllegalStateException("Item: " + resultName + " does not exist")));
+            }
+
             Ingredient in = Ingredient.fromJson(pSerializedRecipe.get(JSON_KEY_INGREDIENT));
-            int duration = GsonHelper.getAsInt(pSerializedRecipe, JSON_KEY_DURATION, 500);
+            int duration = GsonHelper.getAsInt(pSerializedRecipe, JSON_KEY_DURATION, DryingRecipe.DEFAULT_DRYINGTIME);
 
             return new DryingRecipe(pRecipeId, out, in, duration);
         }

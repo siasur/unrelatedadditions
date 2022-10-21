@@ -1,0 +1,8 @@
+{
+  "type": "unrelatedadditions:drying",
+  "dryingtime": 200,
+  "ingredient": {
+    "item": "minecraft:cooked_porkchop"
+  },
+  "result": "minecraft:leather"
+}

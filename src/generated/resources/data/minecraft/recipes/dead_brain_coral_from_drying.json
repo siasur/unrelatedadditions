@@ -1,0 +1,8 @@
+{
+  "type": "unrelatedadditions:drying",
+  "dryingtime": 50,
+  "ingredient": {
+    "item": "minecraft:brain_coral"
+  },
+  "result": "minecraft:dead_brain_coral"
+}

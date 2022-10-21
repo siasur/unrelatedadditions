@@ -108,8 +108,8 @@ public class DryingRackBlockEntity extends BlockEntity {
 
                 if (dryingRack.dryingProgress++ >= recipe.getDryingTime()){
                     dryingRack.itemHandler.setStackInSlot(0, recipe.assemble(dryingRackContainer));
-                    dryingRack.markUpdated();
                     dryingRack.dryingProgress = 0;
+                    dryingRack.markUpdated();
                 }
             } else {
                 dryingRack.dryingProgress = 0;
@@ -156,5 +156,8 @@ public class DryingRackBlockEntity extends BlockEntity {
 
     public ItemStack getRenderStack() {
         return itemHandler.getStackInSlot(0);
+    }
+
+    public static <E extends BlockEntity> void clientTick(Level level, BlockPos blockPos, BlockState blockState, E e) {
     }
 }

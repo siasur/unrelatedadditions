@@ -1,0 +1,8 @@
+{
+  "type": "unrelatedadditions:drying",
+  "dryingtime": 200,
+  "ingredient": {
+    "item": "minecraft:cooked_beef"
+  },
+  "result": "minecraft:leather"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "unrelatedadditions:drying",
+  "dryingtime": 800,
+  "ingredient": {
+    "item": "minecraft:wet_sponge"
+  },
+  "result": "minecraft:sponge"
+}
