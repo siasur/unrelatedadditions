@@ -52,6 +52,8 @@ public class DryingRecipe implements Recipe<SimpleContainer> {
         return result;
     }
 
+    public Ingredient getIngredient() {return ingredient; }
+
     public int getDryingTime() {
         return this.dryingTime;
     }

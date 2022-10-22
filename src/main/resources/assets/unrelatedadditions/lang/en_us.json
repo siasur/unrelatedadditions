@@ -1,23 +1,19 @@
 {
   "item.unrelatedadditions.tiny_coal": "Tiny Coal",
   "item.unrelatedadditions.tiny_charcoal": "Tiny Charcoal",
-
   "item.unrelatedadditions.wooden_hammer": "Wooden Hammer",
   "item.unrelatedadditions.stone_hammer": "Stone Hammer",
   "item.unrelatedadditions.iron_hammer": "Iron Hammer",
   "item.unrelatedadditions.bronze_hammer": "Bronze Hammer",
   "item.unrelatedadditions.golden_hammer": "Golden Hammer",
   "item.unrelatedadditions.diamond_hammer": "Diamond Hammer",
-
   "item.unrelatedadditions.wooden_spade": "Wooden Spade",
   "item.unrelatedadditions.stone_spade": "Stone Spade",
   "item.unrelatedadditions.iron_spade": "Iron Spade",
   "item.unrelatedadditions.bronze_spade": "Bronze Spade",
   "item.unrelatedadditions.golden_spade": "Golden Spade",
   "item.unrelatedadditions.diamond_spade": "Diamond Spade",
-
   "item.unrelatedadditions.magnet": "Magnet",
-
   "item.unrelatedadditions.xp_juice_bucket": "XP Juice Bucket",
 
   "block.unrelatedadditions.compressed_andesite": "Compressed Andesite",
@@ -46,35 +42,36 @@
   "block.unrelatedadditions.triple_compressed_dirt": "Triple Compressed Dirt",
   "block.unrelatedadditions.triple_compressed_red_sand": "Triple Compressed Red Sand",
   "block.unrelatedadditions.triple_compressed_sand": "Triple Compressed Sand",
-
-  "block.unrelatedadditions.white_oak_flag":      "White Flag",
-  "block.unrelatedadditions.orange_oak_flag":     "Orange Flag",
-  "block.unrelatedadditions.magenta_oak_flag":    "Magenta Flag",
+  "block.unrelatedadditions.white_oak_flag": "White Flag",
+  "block.unrelatedadditions.orange_oak_flag": "Orange Flag",
+  "block.unrelatedadditions.magenta_oak_flag": "Magenta Flag",
   "block.unrelatedadditions.light_blue_oak_flag": "Light Blue Flag",
-  "block.unrelatedadditions.yellow_oak_flag":     "Yellow Flag",
-  "block.unrelatedadditions.lime_oak_flag":       "Lime Flag",
-  "block.unrelatedadditions.pink_oak_flag":       "Pink Flag",
-  "block.unrelatedadditions.gray_oak_flag":       "Gray Flag",
+  "block.unrelatedadditions.yellow_oak_flag": "Yellow Flag",
+  "block.unrelatedadditions.lime_oak_flag": "Lime Flag",
+  "block.unrelatedadditions.pink_oak_flag": "Pink Flag",
+  "block.unrelatedadditions.gray_oak_flag": "Gray Flag",
   "block.unrelatedadditions.light_gray_oak_flag": "Light Gray Flag",
-  "block.unrelatedadditions.cyan_oak_flag":       "Cyan Flag",
-  "block.unrelatedadditions.purple_oak_flag":     "Purple Flag",
-  "block.unrelatedadditions.blue_oak_flag":       "Blue Flag",
-  "block.unrelatedadditions.brown_oak_flag":      "Brown Flag",
-  "block.unrelatedadditions.green_oak_flag":      "Green Flag",
-  "block.unrelatedadditions.red_oak_flag":        "Red Flag",
-  "block.unrelatedadditions.black_oak_flag":      "Black Flag",
-
+  "block.unrelatedadditions.cyan_oak_flag": "Cyan Flag",
+  "block.unrelatedadditions.purple_oak_flag": "Purple Flag",
+  "block.unrelatedadditions.blue_oak_flag": "Blue Flag",
+  "block.unrelatedadditions.brown_oak_flag": "Brown Flag",
+  "block.unrelatedadditions.green_oak_flag": "Green Flag",
+  "block.unrelatedadditions.red_oak_flag": "Red Flag",
+  "block.unrelatedadditions.black_oak_flag": "Black Flag",
   "block.unrelatedadditions.angel_block": "Angel Block",
-
   "block.unrelatedadditions.rope_ladder": "Rope Ladder",
-
   "block.unrelatedadditions.xp_drain": "XP Drain",
   "block.unrelatedadditions.xp_shower": "XP Shower",
-  "fluid_type.unrelatedadditions.xp_juice": "XP Juice",
   "block.unrelatedadditions.xp_juice": "XP Juice",
+  "block.unrelatedadditions.drying_rack": "Drying Rack",
+
+  "fluid_type.unrelatedadditions.xp_juice": "XP Juice",
 
   "itemGroup.unrelatedadditions": "Unrelated Additions",
 
   "tooltip.unrelatedadditions.compressedblock": "%s Blocks",
-  "tooltip.unrelatedadditions.angelblock_placement": "Can be placed into the air, will appear below you"
+  "tooltip.unrelatedadditions.angelblock_placement": "Can be placed into the air, will appear below you",
+
+  "gui.unrelatedadditions.integration.jei.category.drying": "Drying",
+  "gui.unrelatedadditions.integration.jei.drying_time_tooltip": "Takes %s ticks"
 }
