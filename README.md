@@ -41,6 +41,9 @@ Looking for an easy way down a ravine or cliff? You can't place normal ladders b
 8. **Liquid XP Storage**  
 Having too much xp? Build an _XP Drain_ put in on top of a Tank (Tank is not included) and convert your experience points into _XP Juice_. To get it back, stick an _XP Shower_ on the tank's side and let it rain xp down on you.
 
+9. **Drying Rack**  
+The drying rack is a catalyst for so-called drying recipes. One of which is the transformation of Rotten Flesh to Leather for example. They can be looked up in JEI or in the soon™ coming wiki.
+
 I'm also open to suggestions, but I won't promise anything.  
 
 _\* Requires a Mod that adds Bronze Ingots to be crafted_
