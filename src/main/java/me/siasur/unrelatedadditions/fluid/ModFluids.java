@@ -20,8 +20,6 @@ public class ModFluids {
     public static final RegistryObject<FlowingFluid> FLOWING_XP_JUICE = FLUIDS.register("flowing_xp_juice",
             () -> new ForgeFlowingFluid.Flowing(ModFluids.XP_JUICE_PROPERTIES));
 
-
-
     private static final ForgeFlowingFluid.Properties XP_JUICE_PROPERTIES = new ForgeFlowingFluid.Properties(
             ModFluidTypes.XP_JUICE_FLUID_TYPE, SOURCE_XP_JUICE, FLOWING_XP_JUICE)
             .slopeFindDistance(3)

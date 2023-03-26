@@ -22,7 +22,6 @@ public class DataGenerators {
         generator.addProvider(true, new ModItemTagsProvider(generator, blockTagsProvider, existingFileHelper));
         generator.addProvider(true, new ModBlockStateProvider(generator, existingFileHelper));
         generator.addProvider(true, new ModItemModelProvider(generator, existingFileHelper));
-
     }
 
 }

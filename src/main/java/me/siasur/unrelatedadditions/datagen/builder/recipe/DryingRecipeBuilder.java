@@ -53,6 +53,7 @@ public class DryingRecipeBuilder implements RecipeBuilder {
 
     @Override
     public DryingRecipeBuilder unlockedBy(String pCriterionName, CriterionTriggerInstance pCriterionTrigger) {
+        // Doesn't show up in the vanilla recipe book so no need for advancement
         return this;
     }
 
