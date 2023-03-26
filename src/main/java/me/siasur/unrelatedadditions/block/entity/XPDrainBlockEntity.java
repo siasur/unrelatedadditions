@@ -1,5 +1,6 @@
 package me.siasur.unrelatedadditions.block.entity;
 
+import me.siasur.unrelatedadditions.config.UnrelatedAdditionsCommonConfig;
 import me.siasur.unrelatedadditions.fluid.ModFluids;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -11,20 +12,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
 public class XPDrainBlockEntity extends BlockEntity {
-
-    /**
-     * Amount of experience points that get taken per tick.
-     */
-    public static final int CONVERSION_SPEED = 2;
-
-    /**
-     * mB of XP Juice that get generated per experience point
-     */
-    public static final int CONVERSION_RATIO = 16;
 
     private int tickCounter = 0;
     private boolean onTop = false;
@@ -33,7 +23,7 @@ public class XPDrainBlockEntity extends BlockEntity {
         super(ModBlockEntities.XP_DRAIN.get(), pPos, pBlockState);
     }
 
-    public static void tick(Level level, BlockPos blockPos, BlockState blockState, XPDrainBlockEntity pEntity) {
+    public static void tick(Level level, BlockPos blockPos, BlockState ignored, XPDrainBlockEntity pEntity) {
         if (level.isClientSide()) return;
 
         ServerPlayer playerOnTop = getValidPlayerOnTop(level, blockPos);
@@ -45,8 +35,8 @@ public class XPDrainBlockEntity extends BlockEntity {
             return;
         }
 
-        int pointsToTake = scaleConversion(CONVERSION_SPEED, playerOnTop.totalExperience, pEntity.tickCounter++);
-        int juiceToProduce = calculateJuiceOutput(pointsToTake, CONVERSION_RATIO);
+        int pointsToTake = scaleConversion(UnrelatedAdditionsCommonConfig.LIQUID_XP_LIQUEFACTION_SPEED.get(), playerOnTop.totalExperience, pEntity.tickCounter++);
+        int juiceToProduce = calculateJuiceOutput(pointsToTake, UnrelatedAdditionsCommonConfig.LIQUID_XP_CONVERSION_RATE.get());
 
         if (juiceToProduce > 0) {
             FluidStack createdXPJuice = new FluidStack(ModFluids.SOURCE_XP_JUICE.get(), juiceToProduce);
@@ -64,7 +54,7 @@ public class XPDrainBlockEntity extends BlockEntity {
     }
 
     private static int calculateJuiceOutput(int pointsToTake, int conversionRatio) {
-        return CONVERSION_RATIO * pointsToTake;
+        return conversionRatio * pointsToTake;
     }
 
     private static ServerPlayer getValidPlayerOnTop(Level level, BlockPos blockPos) {
@@ -78,11 +68,25 @@ public class XPDrainBlockEntity extends BlockEntity {
 
         if (entity == null) return null;
 
-        return entity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, Direction.UP).resolve().orElseGet(() -> null);
+        return entity.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP).resolve().orElse(null);
 
     }
 
-    private static int scaleConversion(int ration, int totalExperience, int time) {
-        return Math.min(CONVERSION_SPEED, totalExperience);
+    /**
+     * Returns the amount of experience points to convert based on the time the player has been standing on the drain
+     * Starts at 0 and increases exponentially based on the time the player has been standing on the drain
+     * <p>
+     * The formula is: <code>min(target, totalExperience, time^1.9 / 80)</code>
+     * </p>
+     *
+     * @param target          The maximum amount of experience points to convert per tick
+     * @param totalExperience The total amount of experience points the player has
+     * @param time            The time in ticks since the player has been standing on the drain
+     * @return The amount of experience points to convert
+     */
+    private static int scaleConversion(int target, int totalExperience, int time) {
+
+        int max = Math.min(target, totalExperience);
+        return (int) Math.min(max, Math.pow(time, 1.9) / 80);
     }
 }

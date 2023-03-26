@@ -1,5 +1,6 @@
 package me.siasur.unrelatedadditions.item;
 
+import me.siasur.unrelatedadditions.config.UnrelatedAdditionsCommonConfig;
 import me.siasur.unrelatedadditions.inventory.ModCreativeModeTab;
 import me.siasur.unrelatedadditions.utils.BlockHitSideDetection;
 import net.minecraft.core.BlockPos;
@@ -15,6 +16,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeHooks;
 
 import java.util.Collections;
@@ -25,16 +27,19 @@ import java.util.stream.IntStream;
 
 public class ExcavatorTool extends DiggerItem {
 
-    private static float _DAMAGE = 1f;
-    private static float _ATTACKSPEED = -2.8f;
-    private static float DURABILITY_MULTIPLIER = 5;
+    private static final float _DAMAGE = 1f;
+    private static final float _ATTACKSPEED = -2.8f;
+    private static final float DURABILITY_MULTIPLIER = 5;
 
     private TagKey<Block> targetTag;
 
+    private ForgeConfigSpec.IntValue toolBreakingRadiusConfigValue;
+
     private static CreativeModeTab _ADDITIONAL_CREATIVE_TAB = ModCreativeModeTab.TAB_UNRELATEDADDITIONS;
 
-    public ExcavatorTool(Tier toolTier, Properties properties, TagKey<Block> targetTag) {
+    public ExcavatorTool(Tier toolTier, Properties properties, TagKey<Block> targetTag, ForgeConfigSpec.IntValue toolBreakingRadiusConfigValue) {
         super(_DAMAGE, _ATTACKSPEED, toolTier, targetTag, properties.durability(Math.round(toolTier.getUses() * DURABILITY_MULTIPLIER)));
+        this.toolBreakingRadiusConfigValue = toolBreakingRadiusConfigValue;
         this.targetTag = targetTag;
     }
 
@@ -111,7 +116,7 @@ public class ExcavatorTool extends DiggerItem {
         EnumSet<Direction> yDirections = EnumSet.of(Direction.DOWN, Direction.UP);
         EnumSet<Direction> zDirections = EnumSet.of(Direction.NORTH, Direction.SOUTH);
 
-        int radius = 1;
+        int radius = toolBreakingRadiusConfigValue.get();
 
         if (xDirections.contains(hitSide)) {
             IntStream.rangeClosed(-radius, radius).forEach(z -> {
@@ -143,51 +148,4 @@ public class ExcavatorTool extends DiggerItem {
 
         return others;
     }
-
-//    private List<BlockPos> getBlocksToBreak(BlockPos pos, Direction hitSide) {
-//
-//        List<BlockPos> others = new ArrayList<>();
-//
-//        others.add(pos);
-//
-//        switch (hitSide) {
-//            case UP:
-//            case DOWN:
-//                others.add(pos.north());
-//                others.add(pos.south());
-//                others.add(pos.east());
-//                others.add(pos.west());
-//                others.add(pos.north().east());
-//                others.add(pos.north().west());
-//                others.add(pos.south().east());
-//                others.add(pos.south().west());
-//                break;
-//            case NORTH:
-//            case SOUTH:
-//                others.add(pos.west());
-//                others.add(pos.east());
-//                others.add(pos.below());
-//                others.add(pos.above());
-//                others.add(pos.west().above());
-//                others.add(pos.east().above());
-//                others.add(pos.west().below());
-//                others.add(pos.east().below());
-//                break;
-//            case EAST:
-//            case WEST:
-//                others.add(pos.north());
-//                others.add(pos.south());
-//                others.add(pos.below());
-//                others.add(pos.above());
-//                others.add(pos.north().above());
-//                others.add(pos.south().above());
-//                others.add(pos.north().below());
-//                others.add(pos.south().below());
-//                break;
-//            default:
-//                return Collections.EMPTY_LIST;
-//        }
-
-//        return others;
-//    }
 }

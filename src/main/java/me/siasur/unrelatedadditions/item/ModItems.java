@@ -2,6 +2,7 @@ package me.siasur.unrelatedadditions.item;
 
 import me.siasur.unrelatedadditions.UnrelatedAdditions;
 import me.siasur.unrelatedadditions.block.ModBlocks;
+import me.siasur.unrelatedadditions.config.UnrelatedAdditionsCommonConfig;
 import me.siasur.unrelatedadditions.fluid.ModFluids;
 import me.siasur.unrelatedadditions.inventory.ModCreativeModeTab;
 import me.siasur.unrelatedadditions.utils.ModTags;
@@ -94,13 +95,14 @@ public class ModItems {
     private static RegistryObject<ExcavatorTool> registerHammer(String name, Tier tier, Item.Properties properties) {
         return ITEMS.register(name,
                 () ->
-                        new ExcavatorTool(tier, properties.stacksTo(1), ModTags.Blocks.MINEABLE_WITH_HAMMER
+                        new ExcavatorTool(tier, properties.stacksTo(1), ModTags.Blocks.MINEABLE_WITH_HAMMER,
+                                UnrelatedAdditionsCommonConfig.HAMMER_BREAKING_RADIUS
                         ));
     }
     private static RegistryObject<ExcavatorTool> registerSpade(String name, Tier tier, Item.Properties properties) {
         return ITEMS.register(name,
                 () ->
-                        new ExcavatorTool(tier, properties.stacksTo(1), ModTags.Blocks.MINEABLE_WITH_SPADE
-                        ));
+                        new ExcavatorTool(tier, properties.stacksTo(1), ModTags.Blocks.MINEABLE_WITH_SPADE,
+                                UnrelatedAdditionsCommonConfig.SPADE_BREAKING_RADIUS));
     }
 }

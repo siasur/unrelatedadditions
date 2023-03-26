@@ -1,5 +1,6 @@
 package me.siasur.unrelatedadditions.item;
 
+import me.siasur.unrelatedadditions.config.UnrelatedAdditionsCommonConfig;
 import me.siasur.unrelatedadditions.utils.ModTags;
 import me.siasur.unrelatedadditions.utils.VectorHelper;
 import net.minecraft.nbt.CompoundTag;
@@ -22,7 +23,6 @@ import java.util.List;
 public class MagnetItem extends Item {
 
     private static final String TAG_KEY = "magnetized";
-    private static final int RANGE = 3;
     private static final float SCALING_FACTOR = 0.45f;
 
     public MagnetItem(Properties p_41383_) {
@@ -37,10 +37,10 @@ public class MagnetItem extends Item {
         if (!isActive(itemStack))
             return;
 
-        AABB areaOfEffect = entity.getBoundingBox().inflate(RANGE);
+        AABB areaOfEffect = entity.getBoundingBox().inflate(UnrelatedAdditionsCommonConfig.MAGNET_RANGE.get());
         List<ItemEntity> itemsToPull = level.getEntitiesOfClass(ItemEntity.class, areaOfEffect, this::canPullItem);
 
-        Vec3 playerVector = entity.position();
+        Vec3 playerVector = entity.getEyePosition();
         for (ItemEntity item : itemsToPull) {
             Vec3 itemVector = VectorHelper.entityCenter(item);
             Vec3 pullVector = playerVector.subtract(itemVector);
@@ -83,7 +83,7 @@ public class MagnetItem extends Item {
     }
 
     private boolean canPullItem(ItemEntity itemEntity) {
-        boolean isNotBlacklisted = itemEntity.getItem().getTags().noneMatch( k -> k.equals(ModTags.Items.MAGNET_BLACKLIST));
+        boolean isNotBlacklisted = itemEntity.getItem().getTags().noneMatch(k -> k.equals(ModTags.Items.MAGNET_BLACKLIST));
         boolean hasPickupDelay = itemEntity.hasPickUpDelay();
 
         return isNotBlacklisted && !hasPickupDelay;

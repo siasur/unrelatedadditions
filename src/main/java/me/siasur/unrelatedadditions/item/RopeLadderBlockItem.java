@@ -1,6 +1,7 @@
 package me.siasur.unrelatedadditions.item;
 
 import me.siasur.unrelatedadditions.block.RopeLadderBlock;
+import me.siasur.unrelatedadditions.config.UnrelatedAdditionsCommonConfig;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -46,14 +47,13 @@ public class RopeLadderBlockItem extends BlockItem {
 
         if (actualState.is(placementState.getBlock())) {
             if (player instanceof ServerPlayer) {
-                CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockpos, itemstack);
+                CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) player, blockpos, itemstack);
             }
         }
 
-        int limit = itemstack.getCount();
+        int limit = Math.min(UnrelatedAdditionsCommonConfig.ROPE_LADDER_LENGTH.get(), itemstack.getCount());
         int count = 1;
-        if (limit > 1)
-        {
+        if (limit > 1) {
             BlockPos nextBlockPos = blockpos.below();
             boolean continuePlacing;
             do {
