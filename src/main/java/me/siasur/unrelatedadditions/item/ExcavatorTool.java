@@ -17,9 +17,11 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ForgeHooks;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.IntStream;
 
 public class ExcavatorTool extends DiggerItem {
 
@@ -32,7 +34,7 @@ public class ExcavatorTool extends DiggerItem {
     private static CreativeModeTab _ADDITIONAL_CREATIVE_TAB = ModCreativeModeTab.TAB_UNRELATEDADDITIONS;
 
     public ExcavatorTool(Tier toolTier, Properties properties, TagKey<Block> targetTag) {
-        super(_DAMAGE, _ATTACKSPEED, toolTier, targetTag, properties.durability(Math.round(toolTier.getUses()*DURABILITY_MULTIPLIER)));
+        super(_DAMAGE, _ATTACKSPEED, toolTier, targetTag, properties.durability(Math.round(toolTier.getUses() * DURABILITY_MULTIPLIER)));
         this.targetTag = targetTag;
     }
 
@@ -46,13 +48,13 @@ public class ExcavatorTool extends DiggerItem {
         Direction hitSide = BlockHitSideDetection.getHitSideByPlayer(serverPlayer);
         BlockState blockState = level.getBlockState(pos);
 
-        if(!blockState.is(targetTag))
+        if (!blockState.is(targetTag))
             return super.onBlockStartBreak(itemstack, pos, serverPlayer);
 
         // Get all BlockPositions around the broken block with respect to the hitSide
-        Iterable<BlockPos> additionalPositions = getAdditionalBlocks(pos, hitSide);
+        Iterable<BlockPos> additionalPositions = getBlocksToBreak(pos, hitSide);
 
-        for (BlockPos additionalPos: additionalPositions) {
+        for (BlockPos additionalPos : additionalPositions) {
             BlockState additionalState = level.getBlockState(additionalPos);
 
             if (additionalState.isAir() || !additionalState.is(targetTag))
@@ -77,9 +79,9 @@ public class ExcavatorTool extends DiggerItem {
             } else {
 
                 if (additionalState.onDestroyedByPlayer(level, additionalPos, player, true, additionalState.getFluidState())) {
-                block.destroy(level, additionalPos, additionalState);
-                block.playerDestroy(level, player, additionalPos, additionalState, tileEntity, itemstack);
-                itemstack.mineBlock(level, additionalState, additionalPos, serverPlayer);
+                    block.destroy(level, additionalPos, additionalState);
+                    block.playerDestroy(level, player, additionalPos, additionalState, tileEntity, itemstack);
+                    itemstack.mineBlock(level, additionalState, additionalPos, serverPlayer);
 
                     if (experience > 0) {
                         block.popExperience(level, additionalPos, experience);
@@ -91,6 +93,7 @@ public class ExcavatorTool extends DiggerItem {
 
         return true;
     }
+
     @Override
     protected boolean allowedIn(CreativeModeTab creativeTab) {
         if (creativeTab.equals(_ADDITIONAL_CREATIVE_TAB)) {
@@ -100,50 +103,89 @@ public class ExcavatorTool extends DiggerItem {
         return super.allowedIn(creativeTab);
     }
 
-    private List<BlockPos> getAdditionalBlocks(BlockPos pos, Direction hitSide) {
-
-        List<BlockPos> others = new ArrayList<>();
-
+    private Set<BlockPos> getBlocksToBreak(BlockPos pos, Direction hitSide) {
+        Set<BlockPos> others = new HashSet<>();
         others.add(pos);
 
-        switch (hitSide) {
-            case UP:
-            case DOWN:
-                others.add(pos.north());
-                others.add(pos.south());
-                others.add(pos.east());
-                others.add(pos.west());
-                others.add(pos.north().east());
-                others.add(pos.north().west());
-                others.add(pos.south().east());
-                others.add(pos.south().west());
-                break;
-            case NORTH:
-            case SOUTH:
-                others.add(pos.west());
-                others.add(pos.east());
-                others.add(pos.below());
-                others.add(pos.above());
-                others.add(pos.west().above());
-                others.add(pos.east().above());
-                others.add(pos.west().below());
-                others.add(pos.east().below());
-                break;
-            case EAST:
-            case WEST:
-                others.add(pos.north());
-                others.add(pos.south());
-                others.add(pos.below());
-                others.add(pos.above());
-                others.add(pos.north().above());
-                others.add(pos.south().above());
-                others.add(pos.north().below());
-                others.add(pos.south().below());
-                break;
-            default:
-                return Collections.EMPTY_LIST;
+        EnumSet<Direction> xDirections = EnumSet.of(Direction.WEST, Direction.EAST);
+        EnumSet<Direction> yDirections = EnumSet.of(Direction.DOWN, Direction.UP);
+        EnumSet<Direction> zDirections = EnumSet.of(Direction.NORTH, Direction.SOUTH);
+
+        if (xDirections.contains(hitSide)) {
+            IntStream.rangeClosed(-1, 1).forEach(z -> {
+                IntStream.rangeClosed(-1, 1).forEach(y -> {
+                    if (z != 0 || y != 0) {
+                        others.add(pos.offset(0, y, z));
+                    }
+                });
+            });
+        } else if (yDirections.contains(hitSide)) {
+            IntStream.rangeClosed(-1, 1).forEach(x -> {
+                IntStream.rangeClosed(-1, 1).forEach(z -> {
+                    if (x != 0 || z != 0) {
+                        others.add(pos.offset(x, 0, z));
+                    }
+                });
+            });
+        } else if (zDirections.contains(hitSide)) {
+            IntStream.rangeClosed(-1, 1).forEach(x -> {
+                IntStream.rangeClosed(-1, 1).forEach(y -> {
+                    if (x != 0 || y != 0) {
+                        others.add(pos.offset(x, y, 0));
+                    }
+                });
+            });
+        } else {
+            return Collections.emptySet();
         }
 
         return others;
     }
+
+//    private List<BlockPos> getBlocksToBreak(BlockPos pos, Direction hitSide) {
+//
+//        List<BlockPos> others = new ArrayList<>();
+//
+//        others.add(pos);
+//
+//        switch (hitSide) {
+//            case UP:
+//            case DOWN:
+//                others.add(pos.north());
+//                others.add(pos.south());
+//                others.add(pos.east());
+//                others.add(pos.west());
+//                others.add(pos.north().east());
+//                others.add(pos.north().west());
+//                others.add(pos.south().east());
+//                others.add(pos.south().west());
+//                break;
+//            case NORTH:
+//            case SOUTH:
+//                others.add(pos.west());
+//                others.add(pos.east());
+//                others.add(pos.below());
+//                others.add(pos.above());
+//                others.add(pos.west().above());
+//                others.add(pos.east().above());
+//                others.add(pos.west().below());
+//                others.add(pos.east().below());
+//                break;
+//            case EAST:
+//            case WEST:
+//                others.add(pos.north());
+//                others.add(pos.south());
+//                others.add(pos.below());
+//                others.add(pos.above());
+//                others.add(pos.north().above());
+//                others.add(pos.south().above());
+//                others.add(pos.north().below());
+//                others.add(pos.south().below());
+//                break;
+//            default:
+//                return Collections.EMPTY_LIST;
+//        }
+
+//        return others;
+//    }
 }

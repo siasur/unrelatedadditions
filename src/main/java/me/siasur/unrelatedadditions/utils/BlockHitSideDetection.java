@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/** This class is used to get the side of the block that was hit by the player. */
 public class BlockHitSideDetection {
 
     private static final Map<UUID, Direction> DIRECTION_MAP = new HashMap<>();
