@@ -111,25 +111,27 @@ public class ExcavatorTool extends DiggerItem {
         EnumSet<Direction> yDirections = EnumSet.of(Direction.DOWN, Direction.UP);
         EnumSet<Direction> zDirections = EnumSet.of(Direction.NORTH, Direction.SOUTH);
 
+        int radius = 1;
+
         if (xDirections.contains(hitSide)) {
-            IntStream.rangeClosed(-1, 1).forEach(z -> {
-                IntStream.rangeClosed(-1, 1).forEach(y -> {
+            IntStream.rangeClosed(-radius, radius).forEach(z -> {
+                IntStream.rangeClosed(-radius, radius).forEach(y -> {
                     if (z != 0 || y != 0) {
                         others.add(pos.offset(0, y, z));
                     }
                 });
             });
         } else if (yDirections.contains(hitSide)) {
-            IntStream.rangeClosed(-1, 1).forEach(x -> {
-                IntStream.rangeClosed(-1, 1).forEach(z -> {
+            IntStream.rangeClosed(-radius, radius).forEach(x -> {
+                IntStream.rangeClosed(-radius, radius).forEach(z -> {
                     if (x != 0 || z != 0) {
                         others.add(pos.offset(x, 0, z));
                     }
                 });
             });
         } else if (zDirections.contains(hitSide)) {
-            IntStream.rangeClosed(-1, 1).forEach(x -> {
-                IntStream.rangeClosed(-1, 1).forEach(y -> {
+            IntStream.rangeClosed(-radius, radius).forEach(x -> {
+                IntStream.rangeClosed(-radius, radius).forEach(y -> {
                     if (x != 0 || y != 0) {
                         others.add(pos.offset(x, y, 0));
                     }
