@@ -29,7 +29,7 @@ jobs:
           tag_prefix: "v" # The prefix to use to identify tags
           major_pattern: "(MAJOR)" # A string which, if present in a git commit, indicates that a change represents a major (breaking) change
           minor_pattern: "(MINOR)" # Same as above except indicating a minor change
-          version_format: "${major}.${minor}.${patch}-pre.${increment}" # A string to determine the format of the version output
+          version_format: "${major}.${minor}.${patch}-pre" # A string to determine the format of the version output
           bump_each_commit: true # If this input is set to true, every commit will be treated as a new version, bumping the patch, minor, or major version based on the commit message.
 
       - name: Printing semantic-version outputs (for debugging)
@@ -65,20 +65,12 @@ jobs:
         with:
           arguments: build
 
-#      - name: Creating Git release tag for the "${{ env.mc_version }}-${{steps.version.outputs.version_tag}}" version
-#        run: |
-#          gh release create ${{steps.version.outputs.version_tag}} \
-#          --draft \
-#          --title "${{steps.version.outputs.version_tag}}" \
-#          --latest \
-#          --generate-notes \
-#          --target "${{github.sha}}"
-#        env:
-#          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Peek into Output path (for debugging)
+        run: ls -la ./build/libs
 
       - name: Create Tag
         run: |
-          git tag "${{ steps.version.outputs.version_tag }}-pre.${{steps.version.outputs.increment}}"
+          git tag "${{ steps.version.outputs.version_tag }}-pre"
           git push --tags
 
       - name: Create release
@@ -87,21 +79,21 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: "${{ steps.version.outputs.version_tag }}-pre.${{steps.version.outputs.increment}}"
+          tag_name: "${{ steps.version.outputs.version_tag }}-pre"
           name: Pre release ${{ steps.version.outputs.version_tag }}
           draft: false
           prerelease: true
           generate_release_notes: true
+          files: |
+            ./build/libs/unrelatedadditions-${{ env.mc_version }}-${{steps.version.outputs.version}}.jar
+            LICENSE
 
-      - name: Peek into Output path (for debugging)
-        run: ls -la ./build/libs
-
-      - name: Upload artifact to release
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: "./build/libs/unrelatedadditions-${{ env.mc_version }}-${{steps.version.outputs.version}}.jar"
-          asset_name: "unrelatedadditions-${{ env.mc_version }}-${{steps.version.outputs.version}}.jar"
-          asset_content_type: application/java-archive
+#      - name: Upload artifact to release
+#        uses: actions/upload-release-asset@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          upload_url: ${{ steps.create_release.outputs.upload_url }}
+#          asset_path: "./build/libs/unrelatedadditions-${{ env.mc_version }}-${{steps.version.outputs.version}}.jar"
+#          asset_name: "unrelatedadditions-${{ env.mc_version }}-${{steps.version.outputs.version}}.jar"
+#          asset_content_type: application/java-archive
