@@ -1,0 +1,101 @@
+name: Pre-Release Workflow
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  tag-build-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.7.0
+        with:
+          fetch-depth: 0
+        
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          
+      - name: Run chmod to make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Get version number
+        id: version
+        uses: paulhatch/semantic-version@v4.0.2
+        with: # See https://github.com/PaulHatch/semantic-version#usage
+          tag_prefix: "v" # The prefix to use to identify tags
+          major_pattern: "(MAJOR)" # A string which, if present in a git commit, indicates that a change represents a major (breaking) change
+          minor_pattern: "(MINOR)" # Same as above except indicating a minor change
+          version_format: "${major}.${minor}.${patch}-pre.${increment}" # A string to determine the format of the version output
+          bump_each_commit: true # If this input is set to true, every commit will be treated as a new version, bumping the patch, minor, or major version based on the commit message.
+
+      - name: Printing semantic-version outputs (for debugging)
+        run: |
+          echo "Most useful outputs:"
+          echo "Next version: ${{steps.version.outputs.version}}"
+          echo "Next version tag: ${{steps.version.outputs.version_tag}}"
+          echo -e "\n All outputs:"
+          echo "version: ${{steps.version.outputs.version}}"
+          echo "major: ${{steps.version.outputs.major}}"
+          echo "minor: ${{steps.version.outputs.minor}}"
+          echo "patch: ${{steps.version.outputs.patch}}"
+          echo "increment: ${{steps.version.outputs.increment}}"
+          echo "version_type: ${{steps.version.outputs.version_type}}"
+          echo "changed: ${{steps.version.outputs.changed}}"
+          echo "authors: ${{steps.version.outputs.authors}}"
+          echo "version_tag: ${{steps.version.outputs.version_tag}}"
+          echo "previous_commit: ${{steps.version.outputs.previous_commit}}"
+          echo "current_commit: ${{steps.version.outputs.current_commit}}"
+
+      - name: Get Minecraft version from gradle.properties
+        run: |
+          minecraft_version=$(grep "minecraft_version " gradle.properties | cut -d= -f2 | xargs)
+          echo "MINECRAFT_VERSION=$minecraft_version" >> $GITHUB_ENV
+          echo "extracted Minecraft version: ${{ env.MINECRAFT_VERSION }}"
+
+      - name: Replace MODVERS token in gradle.properties
+        run: |
+          sed -i "s/{MODVERS}/${{steps.version.outputs.version}}/g" gradle.properties
+
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: build
+
+      - name: Creating Git release tag for the "${{ env.MINECRAFT_VERSION }}-${{steps.version.outputs.version_tag}}" version
+        run: |
+          gh release create ${{steps.version.outputs.version_tag}} \
+          --draft \
+          --title "${{steps.version.outputs.version_tag}}" \
+          --latest \
+          --generate-notes \
+          --target "${{github.sha}}"
+        env:
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+    #  - name: Create release
+    #    id: create_release
+    #    uses: actions/create-release@v1
+    #    env:
+    #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #    with:
+    #      tag_name: ${{ env.tag_name }}
+    #      release_name: Release ${{ env.tag_name }}
+    #      draft: false
+    #      prerelease: true
+
+      - name: Peek into Output path (for debugging)
+        run: ls -la ./build/libs
+
+      - name: Upload artifact to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: "./build/libs/unrelatedadditions-${{ env.MINECRAFT_VERSION }}-${{steps.version.outputs.version}}"
+          asset_name: your-artifact.jar
+          asset_content_type: application/java-archive
