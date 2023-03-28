@@ -83,14 +83,15 @@ jobs:
 
       - name: Create release
         id: create_release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v0.1.15
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: "${{ steps.version.outputs.version_tag }}-pre.${{steps.version.outputs.increment}}"
-          release_name: Pre release ${{ steps.version.outputs.version_tag }}
+          name: Pre release ${{ steps.version.outputs.version_tag }}
           draft: false
           prerelease: true
+          generate_release_notes: true
 
       - name: Peek into Output path (for debugging)
         run: ls -la ./build/libs
