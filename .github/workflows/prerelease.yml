@@ -19,8 +19,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           
-      - name: Run chmod to make gradlew executable
-        run: chmod +x ./gradlew
+#      - name: Run chmod to make gradlew executable
+#        run: chmod +x ./gradlew
 
       - name: Get version number
         id: version
@@ -53,8 +53,8 @@ jobs:
       - name: Get Minecraft version from gradle.properties
         run: |
           minecraft_version=$(grep "minecraft_version " gradle.properties | cut -d= -f2 | xargs)
-          echo "MINECRAFT_VERSION=$minecraft_version" >> $GITHUB_ENV
-          echo "extracted Minecraft version: ${{ env.MINECRAFT_VERSION }}"
+          echo "mc_version=$minecraft_version" >> $GITHUB_ENV
+          echo "extracted Minecraft version: ${{ env.mc_version }}"
 
       - name: Replace MODVERS token in gradle.properties
         run: |
@@ -65,27 +65,38 @@ jobs:
         with:
           arguments: build
 
-      - name: Creating Git release tag for the "${{ env.MINECRAFT_VERSION }}-${{steps.version.outputs.version_tag}}" version
-        run: |
-          gh release create ${{steps.version.outputs.version_tag}} \
-          --draft \
-          --title "${{steps.version.outputs.version_tag}}" \
-          --latest \
-          --generate-notes \
-          --target "${{github.sha}}"
-        env:
-          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+#      - name: Creating Git release tag for the "${{ env.mc_version }}-${{steps.version.outputs.version_tag}}" version
+#        run: |
+#          gh release create ${{steps.version.outputs.version_tag}} \
+#          --draft \
+#          --title "${{steps.version.outputs.version_tag}}" \
+#          --latest \
+#          --generate-notes \
+#          --target "${{github.sha}}"
+#        env:
+#          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-    #  - name: Create release
-    #    id: create_release
-    #    uses: actions/create-release@v1
-    #    env:
-    #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #    with:
-    #      tag_name: ${{ env.tag_name }}
-    #      release_name: Release ${{ env.tag_name }}
-    #      draft: false
-    #      prerelease: true
+      - name: Set tag_name
+        run: |
+          echo "tag_name=v${{ env.mc_version }}-${{steps.version.outputs.version_tag}}" >> $GITHUB_ENV
+
+      - name: Create Tag
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+        run: |
+          git tag "${{ env.tag_name }}"
+          git push --tags
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.tag_name }}
+          release_name: Release ${{ env.tag_name }}
+          draft: true
+          prerelease: false
 
       - name: Peek into Output path (for debugging)
         run: ls -la ./build/libs
