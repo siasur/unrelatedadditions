@@ -5,6 +5,7 @@ import me.siasur.unrelatedadditions.block.ModBlocks;
 import me.siasur.unrelatedadditions.block.entity.ModBlockEntities;
 import me.siasur.unrelatedadditions.block.entity.renderer.DryingRackBlockEntityRenderer;
 import me.siasur.unrelatedadditions.config.UnrelatedAdditionsCommonConfig;
+import me.siasur.unrelatedadditions.enchantment.ModEnchantments;
 import me.siasur.unrelatedadditions.fluid.ModFluidTypes;
 import me.siasur.unrelatedadditions.fluid.ModFluids;
 import me.siasur.unrelatedadditions.item.ModItems;
@@ -44,6 +45,8 @@ public class UnrelatedAdditions
         ModFluids.register(modEventBus);
 
         ModBlockEntities.register(modEventBus);
+
+        ModEnchantments.register(modEventBus);
 
         ModRecipeTypes.register(modEventBus);
         ModRecipeSerializers.register(modEventBus);

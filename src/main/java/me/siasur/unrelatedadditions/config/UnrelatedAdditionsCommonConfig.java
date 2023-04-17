@@ -23,6 +23,8 @@ public class UnrelatedAdditionsCommonConfig {
      */
     public static ForgeConfigSpec.IntValue HAMMER_BREAKING_RADIUS;
 
+    public static ForgeConfigSpec.BooleanValue RANGE_ENCHANTMENT_IS_OBTAINABLE;
+
     // Spade Configuration
 //    public static ForgeConfigSpec.BooleanValue FEATURE_SPADES_ENABLED;
 
@@ -82,17 +84,17 @@ public class UnrelatedAdditionsCommonConfig {
         }
         BUILDER.pop();
 
-        BUILDER.push("Hammers");
+        BUILDER.push("Hammers and Spades");
+        {
+            RANGE_ENCHANTMENT_IS_OBTAINABLE = BUILDER.comment("Can the Range enchantment be obtained in survival?").define("rangeEnchantmentIsObtainable", true);
+        }
         {
 //            FEATURE_HAMMERS_ENABLED = BUILDER.comment("Enable the Hammers feature").define("featureEnabled", true);
-            HAMMER_BREAKING_RADIUS = BUILDER.comment("The radius of the Hammer's breaking area").defineInRange("breakingRadius", 1, 1, 7);
+            HAMMER_BREAKING_RADIUS = BUILDER.comment("The radius of the Hammer's breaking area").defineInRange("hammerBreakingRadius", 1, 1, 7);
         }
-        BUILDER.pop();
-
-        BUILDER.push("Spades");
         {
 //            FEATURE_SPADES_ENABLED = BUILDER.comment("Enable the Spades feature").define("featureEnabled", true);
-            SPADE_BREAKING_RADIUS = BUILDER.comment("The radius of the Spade's breaking area").defineInRange("breakingRadius", 1, 1, 7);
+            SPADE_BREAKING_RADIUS = BUILDER.comment("The radius of the Spade's breaking area").defineInRange("spadeBreakingRadius", 1, 1, 7);
         }
         BUILDER.pop();
 

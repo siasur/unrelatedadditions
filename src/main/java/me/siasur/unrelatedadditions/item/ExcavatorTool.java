@@ -1,6 +1,7 @@
 package me.siasur.unrelatedadditions.item;
 
 import me.siasur.unrelatedadditions.config.UnrelatedAdditionsCommonConfig;
+import me.siasur.unrelatedadditions.enchantment.ModEnchantments;
 import me.siasur.unrelatedadditions.inventory.ModCreativeModeTab;
 import me.siasur.unrelatedadditions.utils.BlockHitSideDetection;
 import net.minecraft.core.BlockPos;
@@ -56,8 +57,10 @@ public class ExcavatorTool extends DiggerItem {
         if (!blockState.is(targetTag))
             return super.onBlockStartBreak(itemstack, pos, serverPlayer);
 
+        int additionalRange = itemstack.getEnchantmentLevel(ModEnchantments.EXCAVATOR_RANGE.get());
+
         // Get all BlockPositions around the broken block with respect to the hitSide
-        Iterable<BlockPos> additionalPositions = getBlocksToBreak(pos, hitSide);
+        Iterable<BlockPos> additionalPositions = getBlocksToBreak(pos, hitSide, additionalRange);
 
         for (BlockPos additionalPos : additionalPositions) {
             BlockState additionalState = level.getBlockState(additionalPos);
@@ -75,7 +78,6 @@ public class ExcavatorTool extends DiggerItem {
 
             Block block = additionalState.getBlock();
             BlockEntity tileEntity = level.getBlockEntity(additionalPos);
-
 
             if (player.isCreative()) {
                 if (additionalState.onDestroyedByPlayer(level, additionalPos, player, false, additionalState.getFluidState())) {
@@ -108,7 +110,7 @@ public class ExcavatorTool extends DiggerItem {
         return super.allowedIn(creativeTab);
     }
 
-    private Set<BlockPos> getBlocksToBreak(BlockPos pos, Direction hitSide) {
+    private Set<BlockPos> getBlocksToBreak(BlockPos pos, Direction hitSide, int additionalRadius) {
         Set<BlockPos> others = new HashSet<>();
         others.add(pos);
 
@@ -116,7 +118,7 @@ public class ExcavatorTool extends DiggerItem {
         EnumSet<Direction> yDirections = EnumSet.of(Direction.DOWN, Direction.UP);
         EnumSet<Direction> zDirections = EnumSet.of(Direction.NORTH, Direction.SOUTH);
 
-        int radius = toolBreakingRadiusConfigValue.get();
+        int radius = toolBreakingRadiusConfigValue.get() + additionalRadius;
 
         if (xDirections.contains(hitSide)) {
             IntStream.rangeClosed(-radius, radius).forEach(z -> {
